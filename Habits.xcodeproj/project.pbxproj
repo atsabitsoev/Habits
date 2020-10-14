@@ -9,23 +9,21 @@
 /* Begin PBXBuildFile section */
 		ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3642537981500859BB6 /* AppDelegate.swift */; };
 		ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3662537981500859BB6 /* SceneDelegate.swift */; };
-		ACCCE3692537981500859BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3682537981500859BB6 /* ViewController.swift */; };
-		ACCCE36C2537981500859BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE36A2537981500859BB6 /* Main.storyboard */; };
 		ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE36D2537981500859BB6 /* Habits.xcdatamodeld */; };
 		ACCCE3712537981500859BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3702537981500859BB6 /* Assets.xcassets */; };
 		ACCCE3742537981500859BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3722537981500859BB6 /* LaunchScreen.storyboard */; };
+		ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ACCCE3612537981500859BB6 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCCE3642537981500859BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCCE3662537981500859BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACCCE3682537981500859BB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ACCCE36B2537981500859BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACCCE36E2537981500859BB6 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
 		ACCCE3702537981500859BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACCCE3732537981500859BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACCCE3752537981500859BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckboxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +56,31 @@
 		ACCCE3632537981500859BB6 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				ACCCE3802537984D00859BB6 /* CustomViews */,
+				ACCCE37D2537982700859BB6 /* SupportingFiles */,
+			);
+			path = Habits;
+			sourceTree = "<group>";
+		};
+		ACCCE37D2537982700859BB6 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
 				ACCCE3642537981500859BB6 /* AppDelegate.swift */,
 				ACCCE3662537981500859BB6 /* SceneDelegate.swift */,
-				ACCCE3682537981500859BB6 /* ViewController.swift */,
-				ACCCE36A2537981500859BB6 /* Main.storyboard */,
 				ACCCE3702537981500859BB6 /* Assets.xcassets */,
 				ACCCE3722537981500859BB6 /* LaunchScreen.storyboard */,
 				ACCCE3752537981500859BB6 /* Info.plist */,
 				ACCCE36D2537981500859BB6 /* Habits.xcdatamodeld */,
 			);
-			path = Habits;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		ACCCE3802537984D00859BB6 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +142,6 @@
 			files = (
 				ACCCE3742537981500859BB6 /* LaunchScreen.storyboard in Resources */,
 				ACCCE3712537981500859BB6 /* Assets.xcassets in Resources */,
-				ACCCE36C2537981500859BB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACCCE3692537981500859BB6 /* ViewController.swift in Sources */,
+				ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */,
 				ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */,
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
@@ -150,14 +162,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ACCCE36A2537981500859BB6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACCCE36B2537981500859BB6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ACCCE3722537981500859BB6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +296,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
-				INFOPLIST_FILE = Habits/Info.plist;
+				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitsoev.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -311,7 +316,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
-				INFOPLIST_FILE = Habits/Info.plist;
+				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitsoev.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
