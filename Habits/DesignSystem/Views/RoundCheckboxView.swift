@@ -23,17 +23,15 @@ final class RoundCheckboxView: UIView {
     
     private var state: Bool
     private var selectionColor: UIColor
-    private let action: ((Bool) -> ())?
+    private var action: ((Bool) -> ())?
     
     
     init(
         state: Bool = false,
-        selectionColor: UIColor = .green,
-        onChangeAction: ((Bool) -> ())? = nil
+        selectionColor: UIColor = .green
     ) {
         self.state = state
         self.selectionColor = selectionColor
-        self.action = onChangeAction
         super.init(frame: .zero)
         configureView()
     }
@@ -53,10 +51,17 @@ final class RoundCheckboxView: UIView {
         super.updateConstraints()
     }
     
+    func getState() -> Bool {
+        return state
+    }
     
     func setState(_ state: Bool) {
         self.state = state
         setupState()
+    }
+    
+    func setAction(_ action: @escaping (Bool) -> ()) {
+        self.action = action
     }
     
     

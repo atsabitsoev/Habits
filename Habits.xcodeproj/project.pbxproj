@@ -13,6 +13,13 @@
 		ACCCE3712537981500859BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3702537981500859BB6 /* Assets.xcassets */; };
 		ACCCE3742537981500859BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3722537981500859BB6 /* LaunchScreen.storyboard */; };
 		ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */; };
+		ACE555802538E97200365AED /* HabitItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5557F2538E97200365AED /* HabitItemCell.swift */; };
+		ACE555852538E9C900365AED /* HabitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555842538E9C900365AED /* HabitItem.swift */; };
+		ACE555892538EB3C00365AED /* HabitItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555882538EB3C00365AED /* HabitItemView.swift */; };
+		ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5558C2538F64100365AED /* HabitProgressService.swift */; };
+		ACE555932538FD6C00365AED /* HabitListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555922538FD6C00365AED /* HabitListController.swift */; };
+		ACE555962538FD7400365AED /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555952538FD7400365AED /* HabitListView.swift */; };
+		ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555982538FD7D00365AED /* HabitListProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		ACCCE3732537981500859BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACCCE3752537981500859BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckboxView.swift; sourceTree = "<group>"; };
+		ACE5557F2538E97200365AED /* HabitItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItemCell.swift; sourceTree = "<group>"; };
+		ACE555842538E9C900365AED /* HabitItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItem.swift; sourceTree = "<group>"; };
+		ACE555882538EB3C00365AED /* HabitItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItemView.swift; sourceTree = "<group>"; };
+		ACE5558C2538F64100365AED /* HabitProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgressService.swift; sourceTree = "<group>"; };
+		ACE555922538FD6C00365AED /* HabitListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListController.swift; sourceTree = "<group>"; };
+		ACE555952538FD7400365AED /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
+		ACE555982538FD7D00365AED /* HabitListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +70,10 @@
 		ACCCE3632537981500859BB6 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
-				ACCCE3802537984D00859BB6 /* CustomViews */,
+				ACE555902538FD5200365AED /* Modules */,
+				ACE5558B2538F62400365AED /* Services */,
+				ACE555832538E9B700365AED /* ViewEntities */,
+				ACCCE3802537984D00859BB6 /* DesignSystem */,
 				ACCCE37D2537982700859BB6 /* SupportingFiles */,
 			);
 			path = Habits;
@@ -75,12 +92,64 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		ACCCE3802537984D00859BB6 /* CustomViews */ = {
+		ACCCE3802537984D00859BB6 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5557E2538E96000365AED /* Cells */,
+				ACE5557D2538E95900365AED /* Views */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		ACE5557D2538E95900365AED /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */,
+				ACE555882538EB3C00365AED /* HabitItemView.swift */,
 			);
-			path = CustomViews;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACE5557E2538E96000365AED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5557F2538E97200365AED /* HabitItemCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ACE555832538E9B700365AED /* ViewEntities */ = {
+			isa = PBXGroup;
+			children = (
+				ACE555842538E9C900365AED /* HabitItem.swift */,
+			);
+			path = ViewEntities;
+			sourceTree = "<group>";
+		};
+		ACE5558B2538F62400365AED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5558C2538F64100365AED /* HabitProgressService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ACE555902538FD5200365AED /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				ACE555912538FD6200365AED /* HabitList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		ACE555912538FD6200365AED /* HabitList */ = {
+			isa = PBXGroup;
+			children = (
+				ACE555922538FD6C00365AED /* HabitListController.swift */,
+				ACE555952538FD7400365AED /* HabitListView.swift */,
+				ACE555982538FD7D00365AED /* HabitListProtocols.swift */,
+			);
+			path = HabitList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,10 +221,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
+				ACE555962538FD7400365AED /* HabitListView.swift in Sources */,
+				ACE555802538E97200365AED /* HabitItemCell.swift in Sources */,
 				ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */,
 				ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */,
+				ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */,
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
+				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
+				ACE555852538E9C900365AED /* HabitItem.swift in Sources */,
+				ACE555892538EB3C00365AED /* HabitItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
