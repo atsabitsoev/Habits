@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol HabitItemViewDelegate: class {
-    func dayCountChanged(itemId id: Int, newDayCount: Int, todayDone: Bool)
+    func dayCountChanged(itemId id: String, newDayCount: Int, todayDone: Bool)
 }
 
 
@@ -191,8 +191,11 @@ final class HabitItemView: UIView {
             daysCompleted = initialState ? item.dayCount - 1 : item.dayCount
         }
         let habitProgressInfo = habitProgressService.getProgress(daysCompleted: daysCompleted)
+        let level = habitProgressInfo.0
         let progress = habitProgressInfo.1
         progressView.setProgress(progress, animated: true)
+        progressView.progressTintColor = levelColors[level]
+        
         delegate?.dayCountChanged(itemId: item.id, newDayCount: daysCompleted, todayDone: checkboxView.getState())
     }
     

@@ -17,24 +17,7 @@ final class HabitListView: UIView, HabitListViewing {
         return tableView
     }()
     
-    private var habitItems = [
-        HabitItem(
-            id: 1,
-            name: "Тренировка",
-            description: "Карина самая красивая девочка на планете Земля",
-            image: .sport,
-            dayCount: 2,
-            todayDone: false
-        ),
-        HabitItem(
-            id: 2,
-            name: "Учеба",
-            description: "Учебу я люблю очень сильно и карину (еще сильнее)",
-            image: .sport,
-            dayCount: 30,
-            todayDone: false
-        )
-    ]
+    private var habitItems: [HabitItem] = []
     
     
     init(controller: HabitListControlling) {
@@ -56,6 +39,11 @@ final class HabitListView: UIView, HabitListViewing {
         backgroundColor = .white
         setNeedsUpdateConstraints()
         configureTableView()
+    }
+    
+    func setItems(_ items: [HabitItem]) {
+        self.habitItems = items
+        tableView.reloadData()
     }
     
     
@@ -104,7 +92,7 @@ extension HabitListView: UITableViewDelegate, UITableViewDataSource {
 
 
 extension HabitListView: HabitItemViewDelegate {
-    func dayCountChanged(itemId id: Int, newDayCount: Int, todayDone: Bool) {
+    func dayCountChanged(itemId id: String, newDayCount: Int, todayDone: Bool) {
         if let indexOfChangedItem = habitItems.firstIndex(where: { (item) -> Bool in
             return item.id == id
         }) {
@@ -113,6 +101,7 @@ extension HabitListView: HabitItemViewDelegate {
             newItem.dayCount = newDayCount
             newItem.todayDone = todayDone
             habitItems[indexOfChangedItem] = newItem
+            controller.dayCountChanged(entityId: id, newDayCount: newDayCount, todayDone: todayDone)
         }
     }
 }

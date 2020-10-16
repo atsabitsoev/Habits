@@ -8,8 +8,10 @@
 import UIKit
 
 protocol HabitListControlling: UIViewController {
+    func dayCountChanged(entityId: String, newDayCount: Int, todayDone: Bool)
 }
 
 protocol HabitListViewing: UIView {
     func configureView()
+    func setItems(_ items: [HabitItem])
 }

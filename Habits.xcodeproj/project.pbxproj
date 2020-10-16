@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */; };
+		ACAA9389253A45B600D8CE41 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */; };
+		ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA938C253A468F00D8CE41 /* DBService.swift */; };
 		ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3642537981500859BB6 /* AppDelegate.swift */; };
 		ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3662537981500859BB6 /* SceneDelegate.swift */; };
 		ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE36D2537981500859BB6 /* Habits.xcdatamodeld */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ACAA938C253A468F00D8CE41 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		ACCCE3612537981500859BB6 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCCE3642537981500859BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCCE3662537981500859BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACAA938B253A467700D8CE41 /* DBEntities */ = {
+			isa = PBXGroup;
+			children = (
+				ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */,
+				ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */,
+			);
+			path = DBEntities;
+			sourceTree = "<group>";
+		};
 		ACCCE3582537981500859BB6 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +88,7 @@
 				ACE555902538FD5200365AED /* Modules */,
 				ACE5558B2538F62400365AED /* Services */,
 				ACE555832538E9B700365AED /* ViewEntities */,
+				ACAA938B253A467700D8CE41 /* DBEntities */,
 				ACCCE3802537984D00859BB6 /* DesignSystem */,
 				ACCCE37D2537982700859BB6 /* SupportingFiles */,
 			);
@@ -130,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE5558C2538F64100365AED /* HabitProgressService.swift */,
+				ACAA938C253A468F00D8CE41 /* DBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,8 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */,
 				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
 				ACE555962538FD7400365AED /* HabitListView.swift in Sources */,
+				ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */,
 				ACE555802538E97200365AED /* HabitItemCell.swift in Sources */,
 				ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */,
 				ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */,
@@ -232,6 +251,7 @@
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
 				ACE555852538E9C900365AED /* HabitItem.swift in Sources */,
 				ACE555892538EB3C00365AED /* HabitItemView.swift in Sources */,
+				ACAA9389253A45B600D8CE41 /* Habit+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

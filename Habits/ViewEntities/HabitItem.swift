@@ -8,7 +8,7 @@
 import Foundation
 
 struct HabitItem {
-    var id: Int
+    var id: String
     var name: String
     var description: String
     var image: HabitImage
