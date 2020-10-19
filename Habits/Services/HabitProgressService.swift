@@ -11,7 +11,7 @@ final class HabitProgressService {
     
     private let levels = (7, 21, 40, 90)
     
-    ///Функция возвращает два значения - Уровень и процент законченности уровня
+    ///Функция возвращает два значения - Уровень и процент его выполнения
     func getProgress(daysCompleted: Int) -> (Int, Float) {
         switch daysCompleted {
         case 0...levels.0:

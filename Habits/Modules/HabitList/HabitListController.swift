@@ -18,6 +18,11 @@ final class HabitListController: UIViewController, HabitListControlling {
         habitListView = HabitListView(controller: self)
         view = habitListView
         habitListView.configureView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigationBar()
         fetchHabits()
     }
     
@@ -26,6 +31,15 @@ final class HabitListController: UIViewController, HabitListControlling {
         dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
     }
     
+    
+    private func configureNavigationBar() {
+        title = "Привычки"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+    }
     
     private func fetchHabits() {
         dbService.getAllHabits { (habits, errorString) in
@@ -75,6 +89,15 @@ final class HabitListController: UIViewController, HabitListControlling {
             todayDone: todayDone
         )
         return habitItem
+    }
+    
+    private func showHabitEditor() {
+        navigationController?.show(HabitEditorController(), sender: nil)
+    }
+    
+    
+    @objc private func addButtonTapped() {
+        showHabitEditor()
     }
     
 }

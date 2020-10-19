@@ -67,8 +67,8 @@ final class HabitItemView: UIView {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 8
-        view.layer.shadowOpacity = 0.2
-        view.layer.cornerRadius = 36
+        view.layer.shadowOpacity = 0.15
+        view.layer.cornerRadius = 32
         return view
     }()
     

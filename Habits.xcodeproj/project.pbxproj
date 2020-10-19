@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39C5C0253E39AF007D8CE5 /* HTextView.swift */; };
+		AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */; };
+		AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */; };
+		AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */; };
+		AC9F0E31253E30B700CB8674 /* HNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E30253E30B700CB8674 /* HNavigationController.swift */; };
 		ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */; };
 		ACAA9389253A45B600D8CE41 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */; };
 		ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA938C253A468F00D8CE41 /* DBService.swift */; };
@@ -26,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC39C5C0253E39AF007D8CE5 /* HTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTextView.swift; sourceTree = "<group>"; };
+		AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorView.swift; sourceTree = "<group>"; };
+		AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorController.swift; sourceTree = "<group>"; };
+		AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorProtocols.swift; sourceTree = "<group>"; };
+		AC9F0E30253E30B700CB8674 /* HNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNavigationController.swift; sourceTree = "<group>"; };
 		ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACAA938C253A468F00D8CE41 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
@@ -57,6 +67,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC9F0E24253E2D1A00CB8674 /* HabitEditor */ = {
+			isa = PBXGroup;
+			children = (
+				AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */,
+				AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */,
+				AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */,
+			);
+			path = HabitEditor;
+			sourceTree = "<group>";
+		};
+		AC9F0E33253E30C600CB8674 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				AC9F0E30253E30B700CB8674 /* HNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		ACAA938B253A467700D8CE41 /* DBEntities */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +139,7 @@
 		ACCCE3802537984D00859BB6 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F0E33253E30C600CB8674 /* Navigation */,
 				ACE5557E2538E96000365AED /* Cells */,
 				ACE5557D2538E95900365AED /* Views */,
 			);
@@ -122,6 +151,7 @@
 			children = (
 				ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */,
 				ACE555882538EB3C00365AED /* HabitItemView.swift */,
+				AC39C5C0253E39AF007D8CE5 /* HTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE555912538FD6200365AED /* HabitList */,
+				AC9F0E24253E2D1A00CB8674 /* HabitEditor */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -239,13 +270,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */,
+				AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */,
 				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
 				ACE555962538FD7400365AED /* HabitListView.swift in Sources */,
 				ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */,
 				ACE555802538E97200365AED /* HabitItemCell.swift in Sources */,
+				AC9F0E31253E30B700CB8674 /* HNavigationController.swift in Sources */,
 				ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */,
 				ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */,
+				AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */,
 				ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */,
+				AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */,
+				AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */,
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
 				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
