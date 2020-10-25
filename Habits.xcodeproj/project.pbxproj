@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A4EFC254615E200532A24 /* OptionView.swift */; };
 		AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39C5C0253E39AF007D8CE5 /* HTextView.swift */; };
 		AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */; };
 		AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0A4EFC254615E200532A24 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		AC39C5C0253E39AF007D8CE5 /* HTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTextView.swift; sourceTree = "<group>"; };
 		AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorView.swift; sourceTree = "<group>"; };
 		AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */,
 				ACE555882538EB3C00365AED /* HabitItemView.swift */,
+				AC0A4EFC254615E200532A24 /* OptionView.swift */,
 				AC39C5C0253E39AF007D8CE5 /* HTextView.swift */,
 			);
 			path = Views;
@@ -272,6 +275,7 @@
 				ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */,
 				AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */,
 				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
+				AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */,
 				ACE555962538FD7400365AED /* HabitListView.swift in Sources */,
 				ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */,
 				ACE555802538E97200365AED /* HabitItemCell.swift in Sources */,

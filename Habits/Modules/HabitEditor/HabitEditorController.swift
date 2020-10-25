@@ -42,11 +42,47 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        if let habit = habit {
+            guard let name = habit.name,
+                  let descriptionString = habit.descriptionString,
+                  let weekDaysInts = habit.weekdaysToRepeat,
+                  let notification = habit.notificationTime else { return }
+            habitEditorView.setValues(
+                name: name,
+                description: descriptionString,
+                weekDaysString: getWeekDaysString(fromInts: weekDaysInts),
+                notificationValueString: notification
+            )
+        }
     }
     
     
     private func configureNavigationBar() {
         title = state == .create ? "Новая привычка" : habit!.name
+    }
+    
+    private func getWeekDaysString(fromInts weekDaysInts: [Int]) -> String {
+        let weekDaysStrings = weekDaysInts.compactMap { (weekDayInt) -> String? in
+            switch weekDayInt {
+            case 0:
+                return "ВС"
+            case 1:
+                return "ПН"
+            case 2:
+                return "ВТ"
+            case 3:
+                return "СР"
+            case 4:
+                return "ЧТ"
+            case 5:
+                return "ПТ"
+            case 6:
+                return "СБ"
+            default:
+                return nil
+            }
+        }
+        return weekDaysStrings.joined(separator: " ")
     }
     
 }

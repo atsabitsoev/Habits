@@ -14,7 +14,6 @@ final class HTextView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Описание"
         return label
     }()
     private let textView: UITextView = {
@@ -29,8 +28,17 @@ final class HTextView: UIView {
     
     private lazy var textViewMinimumHeightConstraint = textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
     
+    private let placeholder: String
+    private lazy var isPlaceholderShown = true {
+        didSet {
+            setPlaceholder(isPlaceholderShown)
+        }
+    }
     
-    init() {
+    
+    init(title: String, placeholder: String) {
+        titleLabel.text = title
+        self.placeholder = placeholder
         super.init(frame: .zero)
         configureView()
     }
@@ -46,11 +54,16 @@ final class HTextView: UIView {
     }
     
     
+    func setText(_ text: String) {
+        textView.text = text
+    }
+    
+    
     private func configureView() {
         addSubview(titleLabel)
         addSubview(textView)
         setNeedsUpdateConstraints()
-        
+        setPlaceholder(true)
         textView.delegate = self
     }
     
@@ -73,6 +86,15 @@ final class HTextView: UIView {
         ])
     }
     
+    private func setPlaceholder(_ isPlaceholderShown: Bool) {
+        if isPlaceholderShown {
+            textView.textColor = .placeholderText
+            textView.text = placeholder
+        } else {
+            textView.text = ""
+            textView.textColor = .label
+        }
+    }
     
 }
 
@@ -82,6 +104,14 @@ extension HTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let contentHeight = textView.contentSize.height
         textViewMinimumHeightConstraint.constant = contentHeight
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        isPlaceholderShown = false
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        isPlaceholderShown = textView.text.isEmpty
     }
     
 }

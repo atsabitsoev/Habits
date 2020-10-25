@@ -21,11 +21,23 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 20
         return stack
     }()
+    private let nameView: HTextView = {
+        let view = HTextView(title: "Название", placeholder: "Тренировка")
+        return view
+    }()
     private let descriptionView: HTextView = {
-        let view = HTextView()
+        let view = HTextView(title: "Описание", placeholder: "3 подхода по 5 раз")
+        return view
+    }()
+    private let weekDaysView: OptionView = {
+        let view = OptionView(title: "Повтор")
+        return view
+    }()
+    private let notificationsView: OptionView = {
+        let view = OptionView(title: "Уведомлять")
         return view
     }()
     
@@ -50,10 +62,26 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         backgroundColor = .white
         addSubview(scrollView)
         scrollView.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(nameView)
+        mainStackView.setCustomSpacing(10, after: nameView)
         mainStackView.addArrangedSubview(descriptionView)
+        mainStackView.addArrangedSubview(weekDaysView)
+        mainStackView.addArrangedSubview(notificationsView)
         setNeedsUpdateConstraints()
         
         addTapRecognizer()
+    }
+    
+    func setValues(
+        name: String,
+        description: String,
+        weekDaysString: String,
+        notificationValueString: String
+        ) {
+        nameView.setText(name)
+        descriptionView.setText(description)
+        weekDaysView.setNewDetail(weekDaysString)
+        notificationsView.setNewDetail(notificationValueString)
     }
     
     

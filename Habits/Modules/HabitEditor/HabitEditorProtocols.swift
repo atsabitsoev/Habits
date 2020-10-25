@@ -12,4 +12,5 @@ protocol HabitEditorControlling: UIViewController {
 
 protocol HabitEditorViewing: UIView {
     func configureView()
+    func setValues(name: String, description: String, weekDaysString: String, notificationValueString: String)
 }
