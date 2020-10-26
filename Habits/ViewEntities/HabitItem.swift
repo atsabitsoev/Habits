@@ -10,7 +10,7 @@ import Foundation
 struct HabitItem {
     var id: String
     var name: String
-    var description: String
+    var descriptionString: String?
     var image: HabitImage
     var dayCount: Int
     var isShownFullDescription: Bool = false

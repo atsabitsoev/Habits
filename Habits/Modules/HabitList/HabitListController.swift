@@ -23,6 +23,10 @@ final class HabitListController: UIViewController, HabitListControlling {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchHabits()
     }
     
@@ -51,17 +55,17 @@ final class HabitListController: UIViewController, HabitListControlling {
                 let habitItem = habitToItem(habit)
                 return habitItem
             }
-            habitListView.setItems(habitItems)
+            habitListView.setItems(habitItems.reversed())
         }
     }
     
     private func habitToItem(_ habit: Habit) -> HabitItem? {
         let id = habit.objectID.uriRepresentation().relativeString
         guard let name = habit.name,
-              let description = habit.descriptionString,
               let imageName = habit.imageName,
               let image = HabitImage(rawValue: imageName),
               let dayCount = habit.dayCount else { return nil }
+        let descriptionString = habit.descriptionString
         
         var todayDone = false
         let calendar = Calendar.current
@@ -82,7 +86,7 @@ final class HabitListController: UIViewController, HabitListControlling {
         let habitItem = HabitItem(
             id: id,
             name: name,
-            description: description,
+            descriptionString: descriptionString,
             image: image,
             dayCount: dayCount.intValue,
             isShownFullDescription: false,

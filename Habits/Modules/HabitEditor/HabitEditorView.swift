@@ -28,6 +28,19 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         let view = HTextView(title: "Название", placeholder: "Тренировка")
         return view
     }()
+    private let pictureButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "runningIcon"), for: .normal)
+        return button
+    }()
+    private let namePictureStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 24
+        stack.alignment = .bottom
+        return stack
+    }()
     private let descriptionView: HTextView = {
         let view = HTextView(title: "Описание", placeholder: "3 подхода по 5 раз")
         return view
@@ -54,6 +67,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     override func updateConstraints() {
         setScrollViewConstraints()
         setMainStackViewConstraints()
+        setPictureButtonConstraints()
         super.updateConstraints()
     }
     
@@ -62,14 +76,20 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         backgroundColor = .white
         addSubview(scrollView)
         scrollView.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(nameView)
-        mainStackView.setCustomSpacing(10, after: nameView)
+        namePictureStackView.addArrangedSubview(nameView)
+        namePictureStackView.addArrangedSubview(pictureButton)
+        mainStackView.addArrangedSubview(namePictureStackView)
+        mainStackView.setCustomSpacing(10, after: namePictureStackView)
         mainStackView.addArrangedSubview(descriptionView)
         mainStackView.addArrangedSubview(weekDaysView)
         mainStackView.addArrangedSubview(notificationsView)
-        setNeedsUpdateConstraints()
         
+        setNeedsUpdateConstraints()
         addTapRecognizer()
+        nameView.tag = 1
+        descriptionView.tag = 2
+        nameView.delegate = self
+        descriptionView.delegate = self
     }
     
     func setValues(
@@ -103,6 +123,13 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         ])
     }
     
+    private func setPictureButtonConstraints() {
+        NSLayoutConstraint.activate([
+            pictureButton.heightAnchor.constraint(equalToConstant: 40),
+            pictureButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
     private func addTapRecognizer() {
         let rec = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         addGestureRecognizer(rec)
@@ -113,4 +140,18 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         endEditing(true)
     }
     
+}
+
+// MARK: - HTextView Delegate
+extension HabitEditorView: HTextViewDelegate {
+    func textChanged(_ newText: String, tag: Int) {
+        switch tag {
+        case 1:
+            controller.setName(newText)
+        case 2:
+            controller.setDescription(newText)
+        default:
+            break
+        }
+    }
 }

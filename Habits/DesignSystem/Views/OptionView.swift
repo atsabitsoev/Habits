@@ -46,9 +46,9 @@ final class OptionView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
         view.layer.shadowRadius = 8
-        view.layer.shadowOpacity = 0.15
+        view.layer.shadowOpacity = 0.1
         view.layer.cornerRadius = 12
         return view
     }()

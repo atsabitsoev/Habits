@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A4EFC254615E200532A24 /* OptionView.swift */; };
 		AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39C5C0253E39AF007D8CE5 /* HTextView.swift */; };
+		AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC591D5A25477955008B733A /* CreatingHabit.swift */; };
 		AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */; };
 		AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */; };
 		AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		AC0A4EFC254615E200532A24 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		AC39C5C0253E39AF007D8CE5 /* HTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTextView.swift; sourceTree = "<group>"; };
+		AC591D5A25477955008B733A /* CreatingHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingHabit.swift; sourceTree = "<group>"; };
 		AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorView.swift; sourceTree = "<group>"; };
 		AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorController.swift; sourceTree = "<group>"; };
 		AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorProtocols.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE555842538E9C900365AED /* HabitItem.swift */,
+				AC591D5A25477955008B733A /* CreatingHabit.swift */,
 			);
 			path = ViewEntities;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
 				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
+				AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */,
 				ACE555852538E9C900365AED /* HabitItem.swift in Sources */,
 				ACE555892538EB3C00365AED /* HabitItemView.swift in Sources */,
 				ACAA9389253A45B600D8CE41 /* Habit+CoreDataProperties.swift in Sources */,

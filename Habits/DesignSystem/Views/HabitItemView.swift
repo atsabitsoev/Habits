@@ -68,12 +68,12 @@ final class HabitItemView: UIView {
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 8
         view.layer.shadowOpacity = 0.15
-        view.layer.cornerRadius = 32
+        view.layer.cornerRadius = 36
         return view
     }()
     
     private weak var delegate: HabitItemViewDelegate?
-    private var item: HabitItem!
+    private var item: HabitItem = HabitItem(id: "", name: "", image: HabitImage.sport, dayCount: 0, todayDone: false)
     private let levelColors: [UIColor] = [.green, .blue, .red, .cyan]
     private var initialState: Bool = false
     
@@ -108,7 +108,7 @@ final class HabitItemView: UIView {
         self.initialState = item.todayDone
         
         titleLabel.text = item.name
-        descriptionLabel.text = item.description
+        descriptionLabel.text = item.descriptionString
         iconImageView.image = UIImage(named: item.image.rawValue)
         let habitProgressService = HabitProgressService()
         let habitProgressInfo = habitProgressService.getProgress(daysCompleted: item.dayCount)
@@ -118,6 +118,8 @@ final class HabitItemView: UIView {
         progressView.progressTintColor = levelColors[level]
         showFullDescription(item.isShownFullDescription)
         checkboxView.setState(item.todayDone)
+        
+        descriptionLabel.isHidden = item.descriptionString == nil
     }
     
     

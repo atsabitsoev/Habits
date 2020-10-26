@@ -8,6 +8,11 @@
 import UIKit
 
 protocol HabitEditorControlling: UIViewController {
+    func setName(_ name: String)
+    func setDescription(_ description: String)
+    func setImageName(_ imageName: String)
+    func setWeekDays(_ weekDays: [Int])
+    func setNotificationTime(_ notifTime: String)
 }
 
 protocol HabitEditorViewing: UIView {

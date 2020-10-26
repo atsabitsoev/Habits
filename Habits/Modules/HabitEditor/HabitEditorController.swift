@@ -16,9 +16,13 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     
     
     private var habitEditorView: HabitEditorViewing!
+    private let dbService = DBService()
+    
+    private var doneButton: UIBarButtonItem!
     
     private let habit: Habit?
     private let state: State
+    private var creatingHabit = CreatingHabit()
     
     
     init(habit: Habit? = nil) {
@@ -42,6 +46,38 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        checkDoneButton()
+        setViewValues()
+    }
+    
+    
+    func setName(_ name: String) {
+        creatingHabit.name = name
+        checkDoneButton()
+    }
+    
+    func setDescription(_ description: String) {
+        creatingHabit.descriptionString = description
+    }
+    
+    func setImageName(_ imageName: String) {
+        creatingHabit.imageName = imageName
+    }
+    
+    func setWeekDays(_ weekDays: [Int]) {
+        creatingHabit.weekdaysToRepeat = weekDays
+    }
+    
+    func setNotificationTime(_ notifTime: String) {
+        creatingHabit.notificationTime = notifTime
+    }
+    
+    
+    private func checkDoneButton() {
+        doneButton.isEnabled = !(creatingHabit.name?.isEmpty ?? true)
+    }
+    
+    private func setViewValues() {
         if let habit = habit {
             guard let name = habit.name,
                   let descriptionString = habit.descriptionString,
@@ -53,12 +89,30 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
                 weekDaysString: getWeekDaysString(fromInts: weekDaysInts),
                 notificationValueString: notification
             )
+        } else {
+            guard let name = creatingHabit.name,
+                  let descriptionString = creatingHabit.descriptionString,
+                  let notification = creatingHabit.notificationTime else { return }
+            let weekDaysInts = creatingHabit.weekdaysToRepeat
+            habitEditorView.setValues(
+                name: name,
+                description: descriptionString,
+                weekDaysString: getWeekDaysString(fromInts: weekDaysInts),
+                notificationValueString: notification
+            )
         }
     }
     
-    
     private func configureNavigationBar() {
         title = state == .create ? "Новая привычка" : habit!.name
+        let rightButtonText = state == .create ? "Создать" : "Готово"
+        doneButton = UIBarButtonItem(
+            title: rightButtonText,
+            style: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
+        navigationItem.setRightBarButton(doneButton, animated: true)
     }
     
     private func getWeekDaysString(fromInts weekDaysInts: [Int]) -> String {
@@ -83,6 +137,24 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
             }
         }
         return weekDaysStrings.joined(separator: " ")
+    }
+    
+    
+    @objc private func doneButtonTapped() {
+        switch state {
+        case .create:
+            _ = dbService.createHabit(
+                name: creatingHabit.name!,
+                descriptionString: creatingHabit.descriptionString,
+                imageName: creatingHabit.imageName,
+                weekdaysToRepeat: creatingHabit.weekdaysToRepeat,
+                notificationTime: creatingHabit.notificationTime
+            )
+        case .edit:
+            print("edit")
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
 }

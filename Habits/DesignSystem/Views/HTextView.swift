@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol HTextViewDelegate {
+    func textChanged(_ newText: String, tag: Int)
+}
+
+
 final class HTextView: UIView {
     
     private let titleLabel: UILabel = {
@@ -19,6 +24,8 @@ final class HTextView: UIView {
     private let textView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.autocorrectionType = .no
+        view.autocapitalizationType = .sentences
         view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         view.layer.cornerRadius = 12
         view.font = .systemFont(ofSize: 14)
@@ -34,6 +41,7 @@ final class HTextView: UIView {
             setPlaceholder(isPlaceholderShown)
         }
     }
+    var delegate: HTextViewDelegate?
     
     
     init(title: String, placeholder: String) {
@@ -104,14 +112,19 @@ extension HTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let contentHeight = textView.contentSize.height
         textViewMinimumHeightConstraint.constant = contentHeight
+        delegate?.textChanged(textView.text, tag: tag)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        isPlaceholderShown = false
+        if !textView.text.isEmpty && isPlaceholderShown {
+            isPlaceholderShown = false
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        isPlaceholderShown = textView.text.isEmpty
+        if textView.text.isEmpty {
+            isPlaceholderShown = true
+        }
     }
     
 }

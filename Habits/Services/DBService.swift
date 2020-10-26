@@ -28,12 +28,12 @@ final class DBService {
     
     func createHabit(
         name: String,
-        descriptionString: String,
+        descriptionString: String?,
         imageName: String,
         weekdaysToRepeat: [Int],
         notificationTime: String?,
-        dayCount: Int,
-        lastDateDone: Date?
+        dayCount: Int = 0,
+        lastDateDone: Date? = nil
     ) -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
         let managedContext = appDelegate.persistentContainer.viewContext
