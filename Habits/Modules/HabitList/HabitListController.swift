@@ -43,6 +43,8 @@ final class HabitListController: UIViewController, HabitListControlling {
             target: self,
             action: #selector(addButtonTapped)
         )
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func fetchHabits() {
@@ -50,9 +52,6 @@ final class HabitListController: UIViewController, HabitListControlling {
             guard let habits = habits else {
                 print(errorString ?? "Неизвестная ошибка")
                 return
-            }
-            habits.forEach { (habit) in
-                print(habit.weekdaysToRepeat)
             }
             let habitItems = habits.compactMap { (habit) -> HabitItem? in
                 let habitItem = habitToItem(habit)
