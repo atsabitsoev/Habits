@@ -47,12 +47,18 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     }()
     private let weekDaysView: OptionView = {
         let view = OptionView(title: "Повтор")
+        view.setNewDetail("Пн Вт Ср Чт Пт Сб Вс")
         return view
     }()
     private let notificationsView: OptionView = {
         let view = OptionView(title: "Уведомлять")
         return view
     }()
+    
+    private var selectWeekDayView = WeekdaysStackView(weekDays: [0,1,2,3,4,5,6], checkedWeekDays: [0,1,2,3,4,5,6])
+    
+    
+    private var weekDaysViewDetail = "Пн Вт Ср Чт Пт Сб Вс"
     
     
     init(controller: HabitEditorControlling) {
@@ -90,6 +96,13 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         descriptionView.tag = 2
         nameView.delegate = self
         descriptionView.delegate = self
+        
+        selectWeekDayView.setAction { [weak self] (weekDay, checked) in
+            self?.selectWeekDayViewAction(weekDay: weekDay, checked: checked)
+        }
+        weekDaysView.setAction { [weak self] in
+            self?.weekDaysViewAction()
+        }
     }
     
     func setValues(
@@ -135,6 +148,31 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         addGestureRecognizer(rec)
     }
     
+    
+    private func weekDaysViewAction() {
+        let alert = AlertContainerViewController(mainView: self.selectWeekDayView, title: "Повтор")
+        alert.modalPresentationStyle = .overCurrentContext
+        alert.modalTransitionStyle = .crossDissolve
+        self.controller.navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
+    private func selectWeekDayViewAction(weekDay: Int, checked: Bool) {
+        let weekDaysStrings = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+        if checked {
+            self.controller.addWeekDayToRepeat(weekDay)
+            let currentWeekDayString = weekDaysStrings[weekDay]
+            var oldWeekDayStrings = self.weekDaysViewDetail.split(separator: " ").map({String($0)})
+            oldWeekDayStrings.append(currentWeekDayString)
+            self.weekDaysViewDetail = oldWeekDayStrings.sorted(by: {(weekDaysStrings.firstIndex(of: $0) ?? 0) < (weekDaysStrings.firstIndex(of: $1) ?? 0)}).joined(separator: " ")
+            self.weekDaysView.setNewDetail(self.weekDaysViewDetail)
+        } else {
+            self.controller.deleteWeekDayToRepeat(weekDay)
+            var oldWeekDayStrings = self.weekDaysViewDetail.split(separator: " ").map({String($0)})
+            oldWeekDayStrings.remove(at: oldWeekDayStrings.firstIndex(of: weekDaysStrings[weekDay])!)
+            self.weekDaysViewDetail = oldWeekDayStrings.joined(separator: " ")
+            self.weekDaysView.setNewDetail(self.weekDaysViewDetail)
+        }
+    }
     
     @objc private func viewTapped() {
         endEditing(true)

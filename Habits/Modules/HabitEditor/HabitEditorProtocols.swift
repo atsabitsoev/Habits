@@ -11,7 +11,8 @@ protocol HabitEditorControlling: UIViewController {
     func setName(_ name: String)
     func setDescription(_ description: String)
     func setImageName(_ imageName: String)
-    func setWeekDays(_ weekDays: [Int])
+    func addWeekDayToRepeat(_ weekDay: Int)
+    func deleteWeekDayToRepeat(_ weekDay: Int)
     func setNotificationTime(_ notifTime: String)
 }
 

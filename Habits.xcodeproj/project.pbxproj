@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A4EFC254615E200532A24 /* OptionView.swift */; };
 		AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39C5C0253E39AF007D8CE5 /* HTextView.swift */; };
+		AC47D8092548C47C0019DB16 /* AlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D8082548C47C0019DB16 /* AlertContainerView.swift */; };
+		AC47D80D2548CA3E0019DB16 /* CheckItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D80C2548CA3E0019DB16 /* CheckItemView.swift */; };
+		AC47D8102548CE990019DB16 /* WeekdaysStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D80F2548CE990019DB16 /* WeekdaysStackView.swift */; };
+		AC47D8142548D2260019DB16 /* AlertContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D8132548D2260019DB16 /* AlertContainerViewController.swift */; };
 		AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC591D5A25477955008B733A /* CreatingHabit.swift */; };
 		AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */; };
 		AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */; };
@@ -35,6 +39,10 @@
 /* Begin PBXFileReference section */
 		AC0A4EFC254615E200532A24 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		AC39C5C0253E39AF007D8CE5 /* HTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTextView.swift; sourceTree = "<group>"; };
+		AC47D8082548C47C0019DB16 /* AlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContainerView.swift; sourceTree = "<group>"; };
+		AC47D80C2548CA3E0019DB16 /* CheckItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemView.swift; sourceTree = "<group>"; };
+		AC47D80F2548CE990019DB16 /* WeekdaysStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysStackView.swift; sourceTree = "<group>"; };
+		AC47D8132548D2260019DB16 /* AlertContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContainerViewController.swift; sourceTree = "<group>"; };
 		AC591D5A25477955008B733A /* CreatingHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingHabit.swift; sourceTree = "<group>"; };
 		AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorView.swift; sourceTree = "<group>"; };
 		AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorController.swift; sourceTree = "<group>"; };
@@ -71,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC47D8072548C45D0019DB16 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				AC47D8082548C47C0019DB16 /* AlertContainerView.swift */,
+				AC47D8132548D2260019DB16 /* AlertContainerViewController.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		AC9F0E24253E2D1A00CB8674 /* HabitEditor */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +163,7 @@
 				AC9F0E33253E30C600CB8674 /* Navigation */,
 				ACE5557E2538E96000365AED /* Cells */,
 				ACE5557D2538E95900365AED /* Views */,
+				AC47D8072548C45D0019DB16 /* Alerts */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -157,6 +175,8 @@
 				ACE555882538EB3C00365AED /* HabitItemView.swift */,
 				AC0A4EFC254615E200532A24 /* OptionView.swift */,
 				AC39C5C0253E39AF007D8CE5 /* HTextView.swift */,
+				AC47D80C2548CA3E0019DB16 /* CheckItemView.swift */,
+				AC47D80F2548CE990019DB16 /* WeekdaysStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */,
+				AC47D80D2548CA3E0019DB16 /* CheckItemView.swift in Sources */,
+				AC47D8142548D2260019DB16 /* AlertContainerViewController.swift in Sources */,
 				AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */,
 				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
 				AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */,
@@ -288,8 +310,10 @@
 				AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */,
 				ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */,
 				AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */,
+				AC47D8092548C47C0019DB16 /* AlertContainerView.swift in Sources */,
 				AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */,
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
+				AC47D8102548CE990019DB16 /* WeekdaysStackView.swift in Sources */,
 				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
 				AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */,

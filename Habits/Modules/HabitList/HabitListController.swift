@@ -51,6 +51,9 @@ final class HabitListController: UIViewController, HabitListControlling {
                 print(errorString ?? "Неизвестная ошибка")
                 return
             }
+            habits.forEach { (habit) in
+                print(habit.weekdaysToRepeat)
+            }
             let habitItems = habits.compactMap { (habit) -> HabitItem? in
                 let habitItem = habitToItem(habit)
                 return habitItem

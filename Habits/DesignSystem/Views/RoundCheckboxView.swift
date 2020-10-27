@@ -58,6 +58,7 @@ final class RoundCheckboxView: UIView {
     func setState(_ state: Bool) {
         self.state = state
         setupState()
+        action?(state)
     }
     
     func setAction(_ action: @escaping (Bool) -> ()) {
@@ -87,10 +88,10 @@ final class RoundCheckboxView: UIView {
     
     private func setupSelectionViewConstraints() {
         NSLayoutConstraint.activate([
-            selectionView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            selectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            selectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            selectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            selectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            selectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            selectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+            selectionView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7)
         ])
     }
     

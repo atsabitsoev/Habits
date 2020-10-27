@@ -64,8 +64,18 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         creatingHabit.imageName = imageName
     }
     
-    func setWeekDays(_ weekDays: [Int]) {
-        creatingHabit.weekdaysToRepeat = weekDays
+    func addWeekDayToRepeat(_ weekDay: Int) {
+        if !creatingHabit.weekdaysToRepeat.contains(weekDay) {
+            creatingHabit.weekdaysToRepeat.append(weekDay)
+        }
+        creatingHabit.weekdaysToRepeat.sort(by: {$0 < $1})
+    }
+    
+    func deleteWeekDayToRepeat(_ weekDay: Int) {
+        if creatingHabit.weekdaysToRepeat.contains(weekDay) {
+            creatingHabit.weekdaysToRepeat.remove(at: creatingHabit.weekdaysToRepeat.firstIndex(of: weekDay)!)
+        }
+        creatingHabit.weekdaysToRepeat.sort(by: {$0 < $1})
     }
     
     func setNotificationTime(_ notifTime: String) {
