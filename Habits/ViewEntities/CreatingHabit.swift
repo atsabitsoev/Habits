@@ -11,7 +11,7 @@ struct CreatingHabit {
     
     var name: String?
     var descriptionString: String?
-    var imageName: String = "runningIcon"
+    var image: HabitImage = .sport
     var weekdaysToRepeat: [Int] = [0,1,2,3,4,5,6]
     var notificationTime: String?
 }

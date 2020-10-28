@@ -61,7 +61,8 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     }
     
     func setImageName(_ imageName: String) {
-        creatingHabit.imageName = imageName
+        guard let image = HabitImage(rawValue: imageName) else { return }
+        creatingHabit.image = image
     }
     
     func addWeekDayToRepeat(_ weekDay: Int) {
@@ -78,7 +79,7 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         creatingHabit.weekdaysToRepeat.sort(by: {$0 < $1})
     }
     
-    func setNotificationTime(_ notifTime: String) {
+    func setNotificationTime(_ notifTime: String?) {
         creatingHabit.notificationTime = notifTime
     }
     
@@ -129,19 +130,19 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         let weekDaysStrings = weekDaysInts.compactMap { (weekDayInt) -> String? in
             switch weekDayInt {
             case 0:
-                return "ВС"
+                return "Пн"
             case 1:
-                return "ПН"
+                return "Вт"
             case 2:
-                return "ВТ"
+                return "Ср"
             case 3:
-                return "СР"
+                return "Чт"
             case 4:
-                return "ЧТ"
+                return "Пт"
             case 5:
-                return "ПТ"
+                return "Сб"
             case 6:
-                return "СБ"
+                return "Вс"
             default:
                 return nil
             }
@@ -156,7 +157,7 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
             _ = dbService.createHabit(
                 name: creatingHabit.name!,
                 descriptionString: creatingHabit.descriptionString,
-                imageName: creatingHabit.imageName,
+                imageName: creatingHabit.image.rawValue,
                 weekdaysToRepeat: creatingHabit.weekdaysToRepeat,
                 notificationTime: creatingHabit.notificationTime
             )

@@ -24,6 +24,7 @@ final class AlertContainerViewController: UIViewController {
     
     private let mainView: UIView
     private let titleString: String
+    private var hasCustomAction = false
     
     
     init(mainView: UIView, title: String) {
@@ -50,9 +51,27 @@ final class AlertContainerViewController: UIViewController {
         view.addSubview(alertView)
         view.setNeedsUpdateConstraints()
         
-        alertView.setAction { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
+        if !hasCustomAction {
+            alertView.setOkAction(title: "Выбрать") { [weak self] in
+                guard let self = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    func setOkAction(title: String, _ action: @escaping (() -> ())) {
+        alertView.setOkAction(title: title) { [weak self] in
+            action()
+            self?.dismiss(animated: true, completion: nil)
+        }
+        hasCustomAction = true
+    }
+    
+    func setDestructiveAction(title: String, _ action: @escaping (() -> ())) {
+        alertView.setDestructiveAction(title: title) { [weak self] in
+            action()
+            self?.dismiss(animated: true, completion: nil)
         }
     }
     

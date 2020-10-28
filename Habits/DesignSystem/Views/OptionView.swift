@@ -63,6 +63,10 @@ final class OptionView: UIView {
     }
     
     
+    func getDetail() -> String {
+        return detailLabel.text ?? ""
+    }
+    
     func setNewDetail(_ detail: String) {
         detailLabel.text = detail
     }

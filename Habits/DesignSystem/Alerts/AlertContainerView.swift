@@ -20,14 +20,30 @@ final class AlertContainerView: UIView {
     private let okButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Выбрать", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .green
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         return button
     }()
+    private let destructiveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .red
+        button.isHidden = true
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        return button
+    }()
+    private let actionButtonsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 0
+        return stack
+    }()
     
     private var okAction: (() -> ())?
+    private var destructiveAction: (() -> ())?
     
     
     init(mainView: UIView, title: String) {
@@ -44,13 +60,21 @@ final class AlertContainerView: UIView {
     override func updateConstraints() {
         setTitleLabelConstraints()
         setMainViewConstraints()
-        setActionButtonConstraints()
+        setActionButtonsStackConstraints()
+        setActionButtonsConstraints()
         super.updateConstraints()
     }
     
     
-    func setAction(_ action: @escaping () -> ()) {
+    func setOkAction(title: String, _ action: @escaping () -> ()) {
+        okButton.setTitle(title, for: .normal)
         self.okAction = action
+    }
+    
+    func setDestructiveAction(title: String, _ action: @escaping () -> ()) {
+        destructiveButton.setTitle(title, for: .normal)
+        self.destructiveAction = action
+        destructiveButton.isHidden = false
     }
     
     
@@ -62,15 +86,22 @@ final class AlertContainerView: UIView {
         addSubview(titleLabel)
         addSubview(mainView)
         mainView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(okButton)
+        addSubview(actionButtonsStack)
+        actionButtonsStack.addArrangedSubview(okButton)
+        actionButtonsStack.addArrangedSubview(destructiveButton)
         setNeedsUpdateConstraints()
         
         okButton.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
+        destructiveButton.addTarget(self, action: #selector(destructiveButtonTapped), for: .touchUpInside)
     }
     
     
     @objc private func okButtonTapped() {
         okAction?()
+    }
+    
+    @objc private func destructiveButtonTapped() {
+        destructiveAction?()
     }
     
 }
@@ -94,12 +125,18 @@ extension AlertContainerView {
         ])
     }
     
-    private func setActionButtonConstraints() {
+    private func setActionButtonsStackConstraints() {
         NSLayoutConstraint.activate([
-            okButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            actionButtonsStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            actionButtonsStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            actionButtonsStack.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    private func setActionButtonsConstraints() {
+        NSLayoutConstraint.activate([
             okButton.heightAnchor.constraint(equalToConstant: 40),
-            okButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            okButton.trailingAnchor.constraint(equalTo: trailingAnchor)
+            destructiveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

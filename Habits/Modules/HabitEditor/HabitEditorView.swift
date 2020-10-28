@@ -103,6 +103,9 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         weekDaysView.setAction { [weak self] in
             self?.weekDaysViewAction()
         }
+        notificationsView.setAction { [weak self] in
+            self?.notificationsViewAction()
+        }
     }
     
     func setValues(
@@ -154,6 +157,31 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         alert.modalPresentationStyle = .overCurrentContext
         alert.modalTransitionStyle = .crossDissolve
         self.controller.navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
+    private func notificationsViewAction() {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .time
+        picker.locale = Locale(identifier: "ru_RU")
+        picker.tintColor = UIColor.label
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        let alert = AlertContainerViewController(mainView: picker, title: "Уведомлять")
+        alert.modalPresentationStyle = .overCurrentContext
+        alert.modalTransitionStyle = .crossDissolve
+        alert.setOkAction(title: "Выбрать") { [weak self] in
+            let timeString = picker.date.timeString()
+            self?.controller.setNotificationTime(timeString)
+            self?.notificationsView.setNewDetail(timeString)
+        }
+        alert.setDestructiveAction(title: "Не уведомлять") { [weak self] in
+            self?.controller.setNotificationTime(nil)
+            self?.notificationsView.setNewDetail("Нет")
+        }
+        picker.date = notificationsView.getDetail().timeDate() ?? Date()
+        self.controller.navigationController?.present(alert, animated: true, completion: nil)
+        
     }
     
     private func selectWeekDayViewAction(weekDay: Int, checked: Bool) {

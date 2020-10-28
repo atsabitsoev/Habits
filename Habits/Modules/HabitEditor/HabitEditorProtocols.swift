@@ -13,7 +13,7 @@ protocol HabitEditorControlling: UIViewController {
     func setImageName(_ imageName: String)
     func addWeekDayToRepeat(_ weekDay: Int)
     func deleteWeekDayToRepeat(_ weekDay: Int)
-    func setNotificationTime(_ notifTime: String)
+    func setNotificationTime(_ notifTime: String?)
 }
 
 protocol HabitEditorViewing: UIView {
