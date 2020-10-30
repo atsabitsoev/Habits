@@ -9,6 +9,7 @@ import UIKit
 
 protocol HabitListControlling: UIViewController {
     func dayCountChanged(entityId: String, newDayCount: Int, todayDone: Bool)
+    func editHabit(withId id: String)
 }
 
 protocol HabitListViewing: UIView {

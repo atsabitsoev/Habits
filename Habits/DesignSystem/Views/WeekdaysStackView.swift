@@ -12,7 +12,7 @@ final class WeekdaysStackView: UIStackView {
     private let weekDaysTitles = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
     
     private let weekDays: [Int]
-    private let checkedWeekDays: [Int]
+    private var checkedWeekDays: [Int]
     
     private var weekDayCheckedAction: ((Int, Bool) -> ())?
     
@@ -34,6 +34,11 @@ final class WeekdaysStackView: UIStackView {
         self.weekDayCheckedAction = action
     }
     
+    func setCheckedWeekDays(_ weekDays: [Int]) {
+        self.checkedWeekDays = weekDays
+        setupArrangedSubviews()
+    }
+    
     
     private func configureView() {
         backgroundColor = .white
@@ -42,7 +47,9 @@ final class WeekdaysStackView: UIStackView {
     }
     
     private func setupArrangedSubviews() {
-        
+        arrangedSubviews.forEach { (view) in
+            removeArrangedSubview(view)
+        }
         for weekDay in weekDays {
             let checkItemView = CheckItemView(
                 CheckItemView.Value(

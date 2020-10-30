@@ -88,6 +88,16 @@ extension HabitListView: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let currentItemId = habitItems[indexPath.row].id
+        let editAction = UIContextualAction(style: .normal, title: "Изменить") { (_, _, handler) in
+            self.controller.editHabit(withId: currentItemId)
+            handler(true)
+        }
+        let actions = [editAction]
+        return UISwipeActionsConfiguration(actions: actions)
+    }
+    
 }
 
 

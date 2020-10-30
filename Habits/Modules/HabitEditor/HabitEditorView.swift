@@ -58,7 +58,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     private var selectWeekDayView = WeekdaysStackView(weekDays: [0,1,2,3,4,5,6], checkedWeekDays: [0,1,2,3,4,5,6])
     
     
-    private var weekDaysViewDetail = "Пн Вт Ср Чт Пт Сб Вс"
+    private lazy var weekDaysViewDetail = weekDaysView.getDetail()
     
     
     init(controller: HabitEditorControlling) {
@@ -109,15 +109,20 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     }
     
     func setValues(
-        name: String,
-        description: String,
-        weekDaysString: String,
-        notificationValueString: String
+        name: String?,
+        description: String?,
+        weekDays: [Int]?,
+        notificationValueString: String?
         ) {
-        nameView.setText(name)
-        descriptionView.setText(description)
-        weekDaysView.setNewDetail(weekDaysString)
-        notificationsView.setNewDetail(notificationValueString)
+        if let name = name {
+            nameView.setText(name)
+        }
+        if let description = description {
+            descriptionView.setText(description)
+        }
+        weekDaysView.setNewDetail(getWeekDaysString(fromInts: weekDays ?? []))
+        selectWeekDayView.setCheckedWeekDays(weekDays ?? [])
+        notificationsView.setNewDetail(notificationValueString ?? "Нет")
     }
     
     
@@ -201,6 +206,32 @@ final class HabitEditorView: UIView, HabitEditorViewing {
             self.weekDaysView.setNewDetail(self.weekDaysViewDetail)
         }
     }
+    
+    private func getWeekDaysString(fromInts weekDaysInts: [Int]) -> String {
+        if weekDaysInts.count == 0 { return "Никогда" }
+        let weekDaysStrings = weekDaysInts.compactMap { (weekDayInt) -> String? in
+            switch weekDayInt {
+            case 0:
+                return "Пн"
+            case 1:
+                return "Вт"
+            case 2:
+                return "Ср"
+            case 3:
+                return "Чт"
+            case 4:
+                return "Пт"
+            case 5:
+                return "Сб"
+            case 6:
+                return "Вс"
+            default:
+                return nil
+            }
+        }
+        return weekDaysStrings.joined(separator: " ")
+    }
+    
     
     @objc private func viewTapped() {
         endEditing(true)

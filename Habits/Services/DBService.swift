@@ -74,4 +74,41 @@ final class DBService {
         }
     }
     
+    func editHabit(
+        withId id: String,
+        descriptionString: String? = nil,
+        imageName: String? = nil,
+        name: String? = nil,
+        notificationTime: String? = nil,
+        weekdaysToRepeat: [Int]? = nil
+        ) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        guard let url = URL(string: id),
+              let objectId = managedContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else { return }
+        let habit = managedContext.object(with: objectId) as! Habit
+        
+        if let descriptionString = descriptionString {
+            habit.descriptionString = descriptionString
+        }
+        if let imageName = imageName {
+            habit.imageName = imageName
+        }
+        if let name = name {
+            habit.name = name
+        }
+        if let notificationTime = notificationTime {
+            habit.notificationTime = notificationTime
+        }
+        if let weekdaysToRepeat = weekdaysToRepeat {
+            habit.weekdaysToRepeat = weekdaysToRepeat
+        }
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 }

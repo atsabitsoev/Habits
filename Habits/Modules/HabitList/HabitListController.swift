@@ -12,6 +12,8 @@ final class HabitListController: UIViewController, HabitListControlling {
     private var habitListView: HabitListViewing!
     private let dbService = DBService()
     
+    private var habits: [Habit] = []
+    
     
     override func loadView() {
         super.loadView()
@@ -35,6 +37,12 @@ final class HabitListController: UIViewController, HabitListControlling {
         dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
     }
     
+    func editHabit(withId id: String) {
+        guard let habit = habits.first(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
+        let editor = HabitEditorController(habit: habit)
+        navigationController?.show(editor, sender: nil)
+    }
+    
     
     private func configureNavigationBar() {
         title = "Привычки"
@@ -53,6 +61,7 @@ final class HabitListController: UIViewController, HabitListControlling {
                 print(errorString ?? "Неизвестная ошибка")
                 return
             }
+            self.habits = habits
             let habitItems = habits.compactMap { (habit) -> HabitItem? in
                 let habitItem = habitToItem(habit)
                 return habitItem

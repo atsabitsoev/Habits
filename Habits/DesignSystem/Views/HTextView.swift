@@ -55,6 +55,11 @@ final class HTextView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setHeightToFitContent()
+    }
+    
     override func updateConstraints() {
         setTitleLabelConstraints()
         setTextViewConstraints()
@@ -63,6 +68,9 @@ final class HTextView: UIView {
     
     
     func setText(_ text: String) {
+        if isPlaceholderShown {
+            isPlaceholderShown = false
+        }
         textView.text = text
     }
     
@@ -104,14 +112,18 @@ final class HTextView: UIView {
         }
     }
     
+    private func setHeightToFitContent() {
+        let contentHeight = textView.contentSize.height
+        textViewMinimumHeightConstraint.constant = contentHeight
+    }
+    
 }
 
 
 extension HTextView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        let contentHeight = textView.contentSize.height
-        textViewMinimumHeightConstraint.constant = contentHeight
+        setHeightToFitContent()
         delegate?.textChanged(textView.text, tag: tag)
     }
     
