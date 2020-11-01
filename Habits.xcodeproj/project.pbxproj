@@ -32,6 +32,7 @@
 		ACCCE3712537981500859BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3702537981500859BB6 /* Assets.xcassets */; };
 		ACCCE3742537981500859BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCE3722537981500859BB6 /* LaunchScreen.storyboard */; };
 		ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */; };
+		ACDC94DE254F5CC9001199C9 /* Habit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC94DD254F5CC9001199C9 /* Habit+Extensions.swift */; };
 		ACE555802538E97200365AED /* HabitItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5557F2538E97200365AED /* HabitItemCell.swift */; };
 		ACE555852538E9C900365AED /* HabitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555842538E9C900365AED /* HabitItem.swift */; };
 		ACE555892538EB3C00365AED /* HabitItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555882538EB3C00365AED /* HabitItemView.swift */; };
@@ -69,6 +70,8 @@
 		ACCCE3732537981500859BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACCCE3752537981500859BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACCCE3812537988900859BB6 /* RoundCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckboxView.swift; sourceTree = "<group>"; };
+		ACDC94DD254F5CC9001199C9 /* Habit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Extensions.swift"; sourceTree = "<group>"; };
+		ACDC94E0254F629E001199C9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ACE5557F2538E97200365AED /* HabitItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItemCell.swift; sourceTree = "<group>"; };
 		ACE555842538E9C900365AED /* HabitItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItem.swift; sourceTree = "<group>"; };
 		ACE555882538EB3C00365AED /* HabitItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItemView.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 			children = (
 				ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */,
 				ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */,
+				ACDC94DD254F5CC9001199C9 /* Habit+Extensions.swift */,
 			);
 			path = DBEntities;
 			sourceTree = "<group>";
@@ -290,6 +294,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = ACCCE3582537981500859BB6;
 			productRefGroup = ACCCE3622537981500859BB6 /* Products */;
@@ -335,6 +340,7 @@
 				AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */,
 				AC7881DC254EE48700E28981 /* ImageCollectionCell.swift in Sources */,
 				ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */,
+				ACDC94DE254F5CC9001199C9 /* Habit+Extensions.swift in Sources */,
 				AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */,
 				AC47D8092548C47C0019DB16 /* AlertContainerView.swift in Sources */,
 				AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */,
@@ -358,6 +364,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ACCCE3732537981500859BB6 /* Base */,
+				ACDC94E0254F629E001199C9 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -369,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -430,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -486,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
@@ -496,6 +506,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitsoev.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -506,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
@@ -516,6 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitsoev.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

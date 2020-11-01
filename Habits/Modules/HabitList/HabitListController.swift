@@ -9,9 +9,21 @@ import UIKit
 
 final class HabitListController: UIViewController, HabitListControlling {
     
+    enum State {
+        case allHabits
+        case todayHabits
+    }
+    
+    
     private var habitListView: HabitListViewing!
     private let dbService = DBService()
     
+    private var state: State = .todayHabits {
+        didSet {
+            configureNavigationBar()
+            fetchHabits()
+        }
+    }
     private var habits: [Habit] = []
     
     
@@ -52,7 +64,13 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     
     private func configureNavigationBar() {
-        title = "Привычки"
+        title = state == .todayHabits ? "Сегодня" : "Все привычки"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: state == .todayHabits ? "Все привычки" : "Сегодня",
+            style: .plain,
+            target: self,
+            action: #selector(changeStateButtonTapped)
+        )
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -68,8 +86,8 @@ final class HabitListController: UIViewController, HabitListControlling {
                 print(errorString ?? "Неизвестная ошибка")
                 return
             }
-            self.habits = habits
-            let habitItems = habits.compactMap { (habit) -> HabitItem? in
+            self.habits = state == .todayHabits ? habits.filter({ $0.shouldBeShownNow() }) : habits
+            let habitItems = self.habits.compactMap { (habit) -> HabitItem? in
                 let habitItem = habitToItem(habit)
                 return habitItem
             }
@@ -120,6 +138,10 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     @objc private func addButtonTapped() {
         showHabitEditor()
+    }
+    
+    @objc private func changeStateButtonTapped() {
+        state = state == .todayHabits ? .allHabits : .todayHabits
     }
     
 }
