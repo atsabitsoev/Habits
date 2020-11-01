@@ -44,7 +44,7 @@ final class OptionView: UIView {
     private let shadowView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 4)
         view.layer.shadowRadius = 8

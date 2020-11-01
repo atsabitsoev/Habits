@@ -62,7 +62,7 @@ final class HabitItemView: UIView {
     }()
     private let shadowView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)

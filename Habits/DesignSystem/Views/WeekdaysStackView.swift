@@ -41,7 +41,7 @@ final class WeekdaysStackView: UIStackView {
     
     
     private func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         axis = .vertical
         spacing = 0
     }

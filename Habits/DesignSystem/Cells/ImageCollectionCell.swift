@@ -55,7 +55,7 @@ final class ImageCollectionCell: UICollectionViewCell {
     
     
     private func configureCell() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         contentView.addSubview(imageView)
         setNeedsUpdateConstraints()
     }

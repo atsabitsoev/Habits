@@ -20,7 +20,7 @@ final class SelectImageView: UIView {
         layout.itemSize = CGSize(width: 40, height: 40)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
@@ -53,7 +53,7 @@ final class SelectImageView: UIView {
     
     
     private func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         setNeedsUpdateConstraints()
     }
     

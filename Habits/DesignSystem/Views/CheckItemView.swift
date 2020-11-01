@@ -63,7 +63,7 @@ final class CheckItemView: UIView {
     
     
     private func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         addSubview(titleLabel)
         addSubview(checkView)
         addSubview(mainButton)

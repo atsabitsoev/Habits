@@ -80,7 +80,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     
     
     func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         addSubview(scrollView)
         scrollView.addSubview(mainStackView)
         namePictureStackView.addArrangedSubview(nameView)

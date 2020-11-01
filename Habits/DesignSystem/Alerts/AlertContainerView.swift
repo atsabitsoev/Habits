@@ -79,7 +79,7 @@ final class AlertContainerView: UIView {
     
     
     private func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         layer.cornerRadius = 28
         clipsToBounds = true
         

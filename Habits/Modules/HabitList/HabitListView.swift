@@ -36,7 +36,7 @@ final class HabitListView: UIView, HabitListViewing {
     
     
     func configureView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         setNeedsUpdateConstraints()
         configureTableView()
     }
