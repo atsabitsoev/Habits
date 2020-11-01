@@ -111,4 +111,20 @@ final class DBService {
         }
     }
     
+    func deleteHabit(withId id: String) -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        guard let url = URL(string: id),
+              let objectId = managedContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else { return false }
+        managedContext.delete(managedContext.object(with: objectId))
+        
+        do {
+            try managedContext.save()
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
 }

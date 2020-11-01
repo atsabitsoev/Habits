@@ -16,6 +16,8 @@
 		AC47E579254A2E7800E8761D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47E578254A2E7800E8761D /* Date+Extensions.swift */; };
 		AC47E57D254A387B00E8761D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47E57C254A387B00E8761D /* String+Extensions.swift */; };
 		AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC591D5A25477955008B733A /* CreatingHabit.swift */; };
+		AC7881D9254EE29800E28981 /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7881D8254EE29800E28981 /* SelectImageView.swift */; };
+		AC7881DC254EE48700E28981 /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7881DB254EE48700E28981 /* ImageCollectionCell.swift */; };
 		AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */; };
 		AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */; };
 		AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */; };
@@ -23,6 +25,7 @@
 		ACAA9388253A45B600D8CE41 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */; };
 		ACAA9389253A45B600D8CE41 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */; };
 		ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA938C253A468F00D8CE41 /* DBService.swift */; };
+		ACB227F1254EFDC00094E785 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB227F0254EFDC00094E785 /* UIColor+Extensions.swift */; };
 		ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3642537981500859BB6 /* AppDelegate.swift */; };
 		ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE3662537981500859BB6 /* SceneDelegate.swift */; };
 		ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACCCE36D2537981500859BB6 /* Habits.xcdatamodeld */; };
@@ -48,6 +51,8 @@
 		AC47E578254A2E7800E8761D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AC47E57C254A387B00E8761D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AC591D5A25477955008B733A /* CreatingHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingHabit.swift; sourceTree = "<group>"; };
+		AC7881D8254EE29800E28981 /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
+		AC7881DB254EE48700E28981 /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 		AC9F0E25253E2D5200CB8674 /* HabitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorView.swift; sourceTree = "<group>"; };
 		AC9F0E29253E2DD800CB8674 /* HabitEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorController.swift; sourceTree = "<group>"; };
 		AC9F0E2C253E2DF500CB8674 /* HabitEditorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditorProtocols.swift; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 		ACAA9386253A45B600D8CE41 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACAA9387253A45B600D8CE41 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACAA938C253A468F00D8CE41 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		ACB227F0254EFDC00094E785 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		ACCCE3612537981500859BB6 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCCE3642537981500859BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCCE3662537981500859BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			children = (
 				AC47E578254A2E7800E8761D /* Date+Extensions.swift */,
 				AC47E57C254A387B00E8761D /* String+Extensions.swift */,
+				ACB227F0254EFDC00094E785 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 				AC39C5C0253E39AF007D8CE5 /* HTextView.swift */,
 				AC47D80C2548CA3E0019DB16 /* CheckItemView.swift */,
 				AC47D80F2548CE990019DB16 /* WeekdaysStackView.swift */,
+				AC7881D8254EE29800E28981 /* SelectImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE5557F2538E97200365AED /* HabitItemCell.swift */,
+				AC7881DB254EE48700E28981 /* ImageCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -322,7 +331,9 @@
 				AC9F0E31253E30B700CB8674 /* HNavigationController.swift in Sources */,
 				ACCCE3822537988900859BB6 /* RoundCheckboxView.swift in Sources */,
 				ACCCE3652537981500859BB6 /* AppDelegate.swift in Sources */,
+				ACB227F1254EFDC00094E785 /* UIColor+Extensions.swift in Sources */,
 				AC9F0E2D253E2DF500CB8674 /* HabitEditorProtocols.swift in Sources */,
+				AC7881DC254EE48700E28981 /* ImageCollectionCell.swift in Sources */,
 				ACE5558D2538F64100365AED /* HabitProgressService.swift in Sources */,
 				AC39C5C1253E39AF007D8CE5 /* HTextView.swift in Sources */,
 				AC47D8092548C47C0019DB16 /* AlertContainerView.swift in Sources */,
@@ -331,6 +342,7 @@
 				AC47E57D254A387B00E8761D /* String+Extensions.swift in Sources */,
 				AC47D8102548CE990019DB16 /* WeekdaysStackView.swift in Sources */,
 				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
+				AC7881D9254EE29800E28981 /* SelectImageView.swift in Sources */,
 				ACCCE3672537981500859BB6 /* SceneDelegate.swift in Sources */,
 				AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */,
 				ACE555852538E9C900365AED /* HabitItem.swift in Sources */,

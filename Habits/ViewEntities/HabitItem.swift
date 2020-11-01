@@ -19,4 +19,14 @@ struct HabitItem {
 
 enum HabitImage: String {
     case sport = "runningIcon"
+    case book
+    case water
+    case writing
+    case yoga
+    case handshake
+    case money
+    case phone
+    case atom
+    case languages
+    case lunges
 }

@@ -34,13 +34,20 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     
     func dayCountChanged(entityId: String, newDayCount: Int, todayDone: Bool) {
-        dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
+        _ = dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
     }
     
     func editHabit(withId id: String) {
         guard let habit = habits.first(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
         let editor = HabitEditorController(habit: habit)
         navigationController?.show(editor, sender: nil)
+    }
+    
+    func deleteHabit(withId id: String) {
+        guard let index = habits.firstIndex(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
+        if dbService.deleteHabit(withId: id) {
+            habits.remove(at: index)
+        }
     }
     
     

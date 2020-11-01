@@ -28,7 +28,7 @@ final class RoundCheckboxView: UIView {
     
     init(
         state: Bool = false,
-        selectionColor: UIColor = .green
+        selectionColor: UIColor = UIColor.Button.accentColor
     ) {
         self.state = state
         self.selectionColor = selectionColor
@@ -63,6 +63,10 @@ final class RoundCheckboxView: UIView {
     
     func setAction(_ action: @escaping (Bool) -> ()) {
         self.action = action
+    }
+    
+    func setTint(color: UIColor) {
+        selectionView.backgroundColor = color
     }
     
     

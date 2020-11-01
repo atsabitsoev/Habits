@@ -56,6 +56,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     }()
     
     private var selectWeekDayView = WeekdaysStackView(weekDays: [0,1,2,3,4,5,6], checkedWeekDays: [0,1,2,3,4,5,6])
+    private let selectImageView = SelectImageView()
     
     
     private lazy var weekDaysViewDetail = weekDaysView.getDetail()
@@ -92,10 +93,12 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         
         setNeedsUpdateConstraints()
         addTapRecognizer()
+        pictureButton.addTarget(self, action: #selector(pictureButtonTapped), for: .touchUpInside)
         nameView.tag = 1
         descriptionView.tag = 2
         nameView.delegate = self
         descriptionView.delegate = self
+        selectImageView.delegate = self
         
         selectWeekDayView.setAction { [weak self] (weekDay, checked) in
             self?.selectWeekDayViewAction(weekDay: weekDay, checked: checked)
@@ -111,6 +114,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
     func setValues(
         name: String?,
         description: String?,
+        image: HabitImage,
         weekDays: [Int]?,
         notificationValueString: String?
         ) {
@@ -120,6 +124,8 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         if let description = description {
             descriptionView.setText(description)
         }
+        pictureButton.setImage(UIImage(named: image.rawValue), for: .normal)
+        selectImageView.setSelectedImage(image)
         weekDaysView.setNewDetail(getWeekDaysString(fromInts: weekDays ?? []))
         selectWeekDayView.setCheckedWeekDays(weekDays ?? [])
         notificationsView.setNewDetail(notificationValueString ?? "Нет")
@@ -237,6 +243,13 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         endEditing(true)
     }
     
+    @objc private func pictureButtonTapped() {
+        let alert = AlertContainerViewController(mainView: selectImageView, title: "Иконка")
+        alert.modalTransitionStyle = .crossDissolve
+        alert.modalPresentationStyle = .overCurrentContext
+        self.controller.navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - HTextView Delegate
@@ -250,5 +263,13 @@ extension HabitEditorView: HTextViewDelegate {
         default:
             break
         }
+    }
+}
+
+// MARK: - SelectImageView Delegate
+extension HabitEditorView: SelectImageViewDelegate {
+    func imageSelected(_ image: HabitImage) {
+        controller.setImage(image)
+        pictureButton.setImage(UIImage(named: image.rawValue), for: .normal)
     }
 }

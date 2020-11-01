@@ -98,6 +98,18 @@ extension HabitListView: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: actions)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let currentItemId = habitItems[indexPath.row].id
+        let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { (_, _, handler) in
+            self.controller.deleteHabit(withId: currentItemId)
+            self.habitItems.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            handler(true)
+        }
+        let actions = [deleteAction]
+        return UISwipeActionsConfiguration(actions: actions)
+    }
+    
 }
 
 

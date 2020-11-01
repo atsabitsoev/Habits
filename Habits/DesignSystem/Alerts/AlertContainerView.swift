@@ -21,7 +21,7 @@ final class AlertContainerView: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .green
+        button.backgroundColor = UIColor.Button.accentColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         return button
     }()

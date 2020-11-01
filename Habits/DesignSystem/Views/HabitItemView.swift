@@ -37,7 +37,7 @@ final class HabitItemView: UIView {
     private let progressView: UIProgressView = {
         let progressView = UIProgressView()
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.progressTintColor = .green
+        progressView.progressTintColor = UIColor.Button.accentColor
         progressView.trackTintColor = .clear
         return progressView
     }()
@@ -66,16 +66,17 @@ final class HabitItemView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 8
-        view.layer.shadowOpacity = 0.15
-        view.layer.cornerRadius = 36
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.1
+        view.layer.cornerRadius = 24
         return view
     }()
     
     private weak var delegate: HabitItemViewDelegate?
     private var item: HabitItem = HabitItem(id: "", name: "", image: HabitImage.sport, dayCount: 0, todayDone: false)
-    private let levelColors: [UIColor] = [.green, .blue, .red, .cyan]
+    private let levelColors: [UIColor] = [UIColor.Levels.first, UIColor.Levels.second, UIColor.Levels.third, UIColor.Levels.fourth]
     private var initialState: Bool = false
+    private var actionToCheckboxAlreadySet = false
     
     
     init() {
@@ -116,8 +117,14 @@ final class HabitItemView: UIView {
         let progress = habitProgressInfo.1
         progressView.setProgress(progress, animated: false)
         progressView.progressTintColor = levelColors[level]
+        checkboxView.setTint(color: levelColors[level])
         showFullDescription(item.isShownFullDescription)
         checkboxView.setState(item.todayDone)
+        
+        if !actionToCheckboxAlreadySet {
+            checkboxView.setAction(checkBoxAction)
+            actionToCheckboxAlreadySet = true
+        }
         
         descriptionLabel.isHidden = item.descriptionString == nil
     }
@@ -137,10 +144,9 @@ final class HabitItemView: UIView {
         addSubview(progressView)
         setNeedsUpdateConstraints()
         
-        layer.cornerRadius = 36
+        layer.cornerRadius = 24
         layer.masksToBounds = true
         
-        checkboxView.setAction(checkBoxAction)
     }
     
     private func setProgressViewConstraints() {

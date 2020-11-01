@@ -64,8 +64,7 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         checkDoneButton()
     }
     
-    func setImageName(_ imageName: String) {
-        guard let image = HabitImage(rawValue: imageName) else { return }
+    func setImage(_ image: HabitImage) {
         creatingHabit.image = image
         checkDoneButton()
     }
@@ -111,6 +110,7 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
             habitEditorView.setValues(
                 name: name,
                 description: descriptionString,
+                image: HabitImage(rawValue: habit.imageName ?? "runningIcon") ?? .sport,
                 weekDays: weekDaysInts,
                 notificationValueString: notification
             )
@@ -119,10 +119,12 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
             let descriptionString = creatingHabit.descriptionString
             let notification = creatingHabit.notificationTime
             let weekDaysInts = creatingHabit.weekdaysToRepeat
+            let image = creatingHabit.image
             
             habitEditorView.setValues(
                 name: name,
                 description: descriptionString,
+                image: image ?? .sport,
                 weekDays: weekDaysInts,
                 notificationValueString: notification
             )
