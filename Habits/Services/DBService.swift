@@ -33,8 +33,8 @@ final class DBService {
         notificationTime: String?,
         dayCount: Int = 0,
         lastDateDone: Date? = nil
-    ) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    ) -> String? { //id
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Habit", in: managedContext)!
         
@@ -49,10 +49,10 @@ final class DBService {
         
         do {
             try managedContext.save()
-            return true
+            return habit.objectID.uriRepresentation().relativeString
         } catch {
             print(error.localizedDescription)
-            return false
+            return nil
         }
     }
     
@@ -102,9 +102,7 @@ final class DBService {
         if let name = name {
             habit.name = name
         }
-        if let notificationTime = notificationTime {
-            habit.notificationTime = notificationTime
-        }
+        habit.notificationTime = notificationTime
         if let weekdaysToRepeat = weekdaysToRepeat {
             habit.weekdaysToRepeat = weekdaysToRepeat
         }

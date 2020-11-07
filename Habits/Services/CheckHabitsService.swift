@@ -57,7 +57,7 @@ final class CheckHabitsService {
             let daysBetweenLastAndNextWeekDays = nextWeekDay > lastDateWeekDay ? nextWeekDay - lastDateWeekDay : 7 - lastDateWeekDay + nextWeekDay
             
             if daysBetweenLastAndNextWeekDays < daysFromLastDate {
-                let habitId = habit.objectID.uriRepresentation().absoluteString
+                let habitId = habit.objectID.uriRepresentation().relativeString
                 cleanHabit(withId: habitId)
             }
         }

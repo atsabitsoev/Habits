@@ -10,7 +10,8 @@ import UIKit
 extension UIColor {
     
     enum Button {
-        static let accentColor: UIColor = #colorLiteral(red: 0.02352941176, green: 0.3215686275, blue: 0.8666666667, alpha: 1)
+        static let accent: UIColor = .systemBlue
+        static let destructive: UIColor = .systemRed
     }
     
     enum Levels {

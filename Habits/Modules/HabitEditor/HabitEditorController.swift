@@ -17,6 +17,7 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     
     private var habitEditorView: HabitEditorViewing!
     private let dbService = DBService()
+    private let notificationsService = LocalNotificationsService()
     
     private var doneButton: UIBarButtonItem!
     
@@ -49,6 +50,8 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         if state == .create {
             checkDoneButton()
             creatingHabit.weekdaysToRepeat = [0,1,2,3,4,5,6]
+        } else {
+            creatingHabit.notificationTime = habit?.notificationTime
         }
         setViewValues()
     }
@@ -153,15 +156,29 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
     @objc private func doneButtonTapped() {
         switch state {
         case .create:
-            _ = dbService.createHabit(
+            if let id = dbService.createHabit(
                 name: creatingHabit.name!,
                 descriptionString: creatingHabit.descriptionString,
                 imageName: creatingHabit.image?.rawValue ?? HabitImage.sport.rawValue,
                 weekdaysToRepeat: creatingHabit.weekdaysToRepeat ?? [],
                 notificationTime: creatingHabit.notificationTime
-            )
+            ) {
+                if let weekDays = creatingHabit.weekdaysToRepeat,
+                   let notificationDate = creatingHabit.notificationTime?.timeDate() {
+                let hour = Calendar.current.component(.hour, from: notificationDate)
+                let minute = Calendar.current.component(.minute, from: notificationDate)
+                notificationsService.createNotification(
+                    id: id,
+                    title: "Напоминание",
+                    subTitle: creatingHabit.name!,
+                    body: creatingHabit.descriptionString,
+                    weekDays: weekDays,
+                    hour: hour,
+                    minute: minute)
+            }
+            }
         case .edit:
-            guard let id = habit?.objectID.uriRepresentation().absoluteString else { return }
+            guard let id = habit?.objectID.uriRepresentation().relativeString else { return }
             dbService.editHabit(
                 withId: id,
                 descriptionString: creatingHabit.descriptionString,
@@ -170,6 +187,24 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
                 notificationTime: creatingHabit.notificationTime,
                 weekdaysToRepeat: creatingHabit.weekdaysToRepeat
             )
+            
+            guard let habitWeekDays = habit?.weekdaysToRepeat else { return }
+            notificationsService.removeNotification(id: id, weekDays: habitWeekDays)
+            let weekDays = creatingHabit.weekdaysToRepeat ?? habitWeekDays
+            if let notificationDate = creatingHabit.notificationTime?.timeDate() {
+                let hour = Calendar.current.component(.hour, from: notificationDate)
+                let minute = Calendar.current.component(.minute, from: notificationDate)
+                notificationsService.createNotification(
+                    id: id,
+                    title: "Напоминание",
+                    subTitle: creatingHabit.name ?? habit?.name ?? "Без названия",
+                    body: creatingHabit.descriptionString ?? habit?.descriptionString,
+                    weekDays: weekDays,
+                    hour: hour,
+                    minute: minute
+                )
+            }
+            
         }
         
         navigationController?.popViewController(animated: true)

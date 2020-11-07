@@ -28,7 +28,7 @@ extension Date {
     
     func formattedWeekDay() -> Int {
         let currentWeekDay = self.weekDay()
-        var formattedWeekDay = 0
+        var formattedWeekDay: Int
         if currentWeekDay < 2 {
             formattedWeekDay = 6
         } else {

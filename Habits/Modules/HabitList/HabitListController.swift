@@ -17,6 +17,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     private var habitListView: HabitListViewing!
     private let dbService = DBService()
+    private let notificationsService = LocalNotificationsService()
     private let checkHabitsService = CheckHabitsService()
     
     private var state: State = .todayHabits {
@@ -75,11 +76,12 @@ final class HabitListController: UIViewController, HabitListControlling {
             target: self,
             action: #selector(changeStateButtonTapped)
         )
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addButtonTapped)
         )
+        navigationItem.setRightBarButton(addButton, animated: false)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -97,6 +99,14 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     private func deleteHabit(withId id: String) {
         guard let index = habits.firstIndex(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
+        let currentHabit = habits[index]
+        if let weekDays = currentHabit.weekdaysToRepeat,
+           let _ = currentHabit.notificationTime {
+            notificationsService.removeNotification(
+                id: currentHabit.objectID.uriRepresentation().relativeString,
+                weekDays: weekDays
+            )
+        }
         if dbService.deleteHabit(withId: id) {
             habits.remove(at: index)
             habitListView.deleteHabit(atRow: index)
@@ -106,7 +116,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     private func showCleanedHabitsIfNeeded() {
         let cleanedHabitIds = checkHabitsService.cleanedHabitIds
         if cleanedHabitIds.count > 0 {
-            let cleanedHabits = habits.filter({ cleanedHabitIds.contains($0.objectID.uriRepresentation().absoluteString) })
+            let cleanedHabits = habits.filter({ cleanedHabitIds.contains($0.objectID.uriRepresentation().relativeString) })
             var alertMessage = ""
             let cleanedHabitsCount = habits.count
             guard cleanedHabitsCount > 0 else { return }

@@ -21,17 +21,17 @@ final class AlertContainerView: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.Button.accentColor
+        button.backgroundColor = UIColor.Button.accent
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         return button
     }()
     private let destructiveButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .red
+        button.setTitleColor(UIColor.Button.destructive, for: .normal)
+        button.backgroundColor = .clear
         button.isHidden = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
     }()
     private let actionButtonsStack: UIStackView = {

@@ -15,6 +15,7 @@
 		AC47D8142548D2260019DB16 /* AlertContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D8132548D2260019DB16 /* AlertContainerViewController.swift */; };
 		AC47E579254A2E7800E8761D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47E578254A2E7800E8761D /* Date+Extensions.swift */; };
 		AC47E57D254A387B00E8761D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47E57C254A387B00E8761D /* String+Extensions.swift */; };
+		AC4D93C4255608C800A0A6E4 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D93C3255608C800A0A6E4 /* LocalNotificationsService.swift */; };
 		AC591D5B25477955008B733A /* CreatingHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC591D5A25477955008B733A /* CreatingHabit.swift */; };
 		AC65FA1C2551D76000F9DDAA /* CheckHabitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FA1B2551D76000F9DDAA /* CheckHabitsService.swift */; };
 		AC7881D9254EE29800E28981 /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7881D8254EE29800E28981 /* SelectImageView.swift */; };
@@ -52,6 +53,7 @@
 		AC47D8132548D2260019DB16 /* AlertContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContainerViewController.swift; sourceTree = "<group>"; };
 		AC47E578254A2E7800E8761D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AC47E57C254A387B00E8761D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AC4D93C3255608C800A0A6E4 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		AC591D5A25477955008B733A /* CreatingHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingHabit.swift; sourceTree = "<group>"; };
 		AC65FA1B2551D76000F9DDAA /* CheckHabitsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHabitsService.swift; sourceTree = "<group>"; };
 		AC7881D8254EE29800E28981 /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				ACE5558C2538F64100365AED /* HabitProgressService.swift */,
 				ACAA938C253A468F00D8CE41 /* DBService.swift */,
 				AC65FA1B2551D76000F9DDAA /* CheckHabitsService.swift */,
+				AC4D93C3255608C800A0A6E4 /* LocalNotificationsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				AC47D8092548C47C0019DB16 /* AlertContainerView.swift in Sources */,
 				AC9F0E2A253E2DD800CB8674 /* HabitEditorController.swift in Sources */,
 				ACCCE36F2537981500859BB6 /* Habits.xcdatamodeld in Sources */,
+				AC4D93C4255608C800A0A6E4 /* LocalNotificationsService.swift in Sources */,
 				AC47E57D254A387B00E8761D /* String+Extensions.swift in Sources */,
 				AC47D8102548CE990019DB16 /* WeekdaysStackView.swift in Sources */,
 				ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */,
@@ -501,7 +505,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -524,7 +528,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -28,7 +28,7 @@ final class RoundCheckboxView: UIView {
     
     init(
         state: Bool = false,
-        selectionColor: UIColor = UIColor.Button.accentColor
+        selectionColor: UIColor = UIColor.Button.accent
     ) {
         self.state = state
         self.selectionColor = selectionColor

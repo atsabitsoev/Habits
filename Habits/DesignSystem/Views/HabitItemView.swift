@@ -38,7 +38,7 @@ final class HabitItemView: UIView {
     private let progressView: UIProgressView = {
         let progressView = UIProgressView()
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.progressTintColor = UIColor.Button.accentColor
+        progressView.progressTintColor = UIColor.Button.accent
         progressView.trackTintColor = .clear
         return progressView
     }()
