@@ -16,6 +16,18 @@ final class HabitListView: UIView, HabitListViewing {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    private let tableBackgroundView: UIView = {
+        let image = UIImage(named: "tableViewPlaceholder")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    private let tableBackgroundViewToday: UIView = {
+        let image = UIImage(named: "tableViewPlaceholderToday")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     private var habitItems: [HabitItem] = []
     
@@ -43,12 +55,23 @@ final class HabitListView: UIView, HabitListViewing {
     
     func setItems(_ items: [HabitItem]) {
         self.habitItems = items
+        checkTableBackgroundView()
         tableView.reloadData()
     }
     
     func deleteHabit(atRow row: Int) {
         self.habitItems.remove(at: row)
+        checkTableBackgroundView()
         self.tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+    }
+    
+    func setState(_ state: HabitListController.State) {
+        switch state {
+        case .allHabits:
+            tableView.backgroundView = tableBackgroundView
+        case .todayHabits:
+            tableView.backgroundView = tableBackgroundViewToday
+        }
     }
     
     
@@ -59,6 +82,7 @@ final class HabitListView: UIView, HabitListViewing {
         tableView.register(HabitItemCell.self, forCellReuseIdentifier: HabitItemCell.identifier)
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.backgroundView = tableBackgroundView
     }
     
     private func setTableViewConstraints() {
@@ -68,6 +92,11 @@ final class HabitListView: UIView, HabitListViewing {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+    
+    
+    private func checkTableBackgroundView() {
+        tableBackgroundView.isHidden = !habitItems.isEmpty
     }
     
 }

@@ -22,6 +22,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     private var state: State = .todayHabits {
         didSet {
+            habitListView.setState(state)
             configureNavigationBar()
             fetchHabits()
         }
@@ -40,6 +41,7 @@ final class HabitListController: UIViewController, HabitListControlling {
         super.viewDidLoad()
         Vibration.heavy.vibrate()
         configureNavigationBar()
+        habitListView.setState(state)
     }
     
     override func viewWillAppear(_ animated: Bool) {

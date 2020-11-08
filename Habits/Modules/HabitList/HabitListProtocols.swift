@@ -17,4 +17,5 @@ protocol HabitListViewing: UIView {
     func configureView()
     func setItems(_ items: [HabitItem])
     func deleteHabit(atRow row: Int)
+    func setState(_ state: HabitListController.State)
 }
