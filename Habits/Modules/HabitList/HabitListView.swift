@@ -72,6 +72,7 @@ final class HabitListView: UIView, HabitListViewing {
         case .todayHabits:
             tableView.backgroundView = tableBackgroundViewToday
         }
+        checkTableBackgroundView()
     }
     
     
@@ -97,6 +98,7 @@ final class HabitListView: UIView, HabitListViewing {
     
     private func checkTableBackgroundView() {
         tableBackgroundView.isHidden = !habitItems.isEmpty
+        tableBackgroundViewToday.isHidden = !habitItems.isEmpty
     }
     
 }
