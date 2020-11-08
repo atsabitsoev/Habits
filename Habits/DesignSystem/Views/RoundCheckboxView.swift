@@ -112,6 +112,7 @@ final class RoundCheckboxView: UIView {
     @objc private func mainButtonTapped() {
         state = !state
         setupState()
+        Vibration.medium.vibrate()
         action?(state)
     }
     

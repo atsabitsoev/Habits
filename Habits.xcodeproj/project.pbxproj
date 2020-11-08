@@ -42,6 +42,7 @@
 		ACE555932538FD6C00365AED /* HabitListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555922538FD6C00365AED /* HabitListController.swift */; };
 		ACE555962538FD7400365AED /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555952538FD7400365AED /* HabitListView.swift */; };
 		ACE555992538FD7D00365AED /* HabitListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE555982538FD7D00365AED /* HabitListProtocols.swift */; };
+		ACEB46D4255841350085B70F /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEB46D3255841350085B70F /* Vibration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		ACE555922538FD6C00365AED /* HabitListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListController.swift; sourceTree = "<group>"; };
 		ACE555952538FD7400365AED /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
 		ACE555982538FD7D00365AED /* HabitListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListProtocols.swift; sourceTree = "<group>"; };
+		ACEB46D3255841350085B70F /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				ACE5557E2538E96000365AED /* Cells */,
 				ACE5557D2538E95900365AED /* Views */,
 				AC47D8072548C45D0019DB16 /* Alerts */,
+				ACEB46D3255841350085B70F /* Vibration.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				AC47E579254A2E7800E8761D /* Date+Extensions.swift in Sources */,
 				AC9F0E26253E2D5200CB8674 /* HabitEditorView.swift in Sources */,
 				ACE555932538FD6C00365AED /* HabitListController.swift in Sources */,
+				ACEB46D4255841350085B70F /* Vibration.swift in Sources */,
 				AC0A4EFD254615E200532A24 /* OptionView.swift in Sources */,
 				ACE555962538FD7400365AED /* HabitListView.swift in Sources */,
 				ACAA938D253A468F00D8CE41 /* DBService.swift in Sources */,
@@ -505,7 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -528,7 +532,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 89WB9E7UEU;
 				INFOPLIST_FILE = Habits/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

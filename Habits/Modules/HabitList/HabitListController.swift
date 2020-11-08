@@ -38,6 +38,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Vibration.heavy.vibrate()
         configureNavigationBar()
     }
     

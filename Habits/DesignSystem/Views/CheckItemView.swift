@@ -79,6 +79,7 @@ final class CheckItemView: UIView {
     
     
     @objc private func mainButtonTapped() {
+        Vibration.medium.vibrate()
         checkView.setState(!checkView.getState())
     }
     
