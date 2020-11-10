@@ -19,6 +19,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     private let dbService = DBService()
     private let notificationsService = LocalNotificationsService()
     private let checkHabitsService = CheckHabitsService()
+    private let habitsProgressService = HabitProgressService()
     
     private var state: State = .todayHabits {
         didSet {
@@ -58,6 +59,9 @@ final class HabitListController: UIViewController, HabitListControlling {
     // MARK: - Opened funcs
     func dayCountChanged(entityId: String, newDayCount: Int, todayDone: Bool) {
         _ = dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
+        if habitsProgressService.isStartOfLevel(daysCompleted: newDayCount) && todayDone {
+            showCongratulationAlert(finishedLevel: habitsProgressService.getProgress(daysCompleted: newDayCount).0 + 1)
+        }
     }
     
     func editHabitAction(withId id: String) {
@@ -202,6 +206,14 @@ final class HabitListController: UIViewController, HabitListControlling {
         navigationController?.present(alert, animated: true, completion: { [weak self] in
             self?.checkHabitsService.cleanedHabitIds = []
         })
+    }
+    
+    private func showCongratulationAlert(finishedLevel: Int) {
+        let congratulationView = CongratulationView(congratulation: "Вы успешно завершили \(finishedLevel) уровень")
+        let alert = AlertContainerViewController(mainView: congratulationView, title: "Поздравляем!")
+        alert.modalTransitionStyle = .crossDissolve
+        alert.modalPresentationStyle = .overCurrentContext
+        navigationController?.present(alert, animated: true, completion: nil)
     }
     
     

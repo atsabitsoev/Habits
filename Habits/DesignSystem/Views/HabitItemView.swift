@@ -213,6 +213,7 @@ final class HabitItemView: UIView {
         let progress = habitProgressInfo.1
         progressView.setProgress(progress, animated: true)
         progressView.progressTintColor = levelColors[level]
+        checkboxView.setTint(color: levelColors[level])
         delegate?.dayCountChanged(itemId: item.id, newDayCount: daysCompleted, todayDone: checkboxView.getState())
     }
     

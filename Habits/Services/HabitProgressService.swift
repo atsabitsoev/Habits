@@ -31,4 +31,9 @@ final class HabitProgressService {
         }
     }
     
+    func isStartOfLevel(daysCompleted: Int) -> Bool {
+        let allLevels = [levels.0, levels.1, levels.2, levels.3]
+        return allLevels.contains(daysCompleted)
+    }
+    
 }
