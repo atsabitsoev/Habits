@@ -210,7 +210,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     private func showCongratulationAlert(finishedLevel: Int) {
         let congratulationView = CongratulationView(congratulation: "Вы успешно завершили \(finishedLevel) уровень")
-        let alert = AlertContainerViewController(mainView: congratulationView, title: "Поздравляем!")
+        let alert = AlertContainerViewController(mainView: congratulationView, title: "Поздравляем!", okActionTitle: "Ок")
         alert.modalTransitionStyle = .crossDissolve
         alert.modalPresentationStyle = .overCurrentContext
         navigationController?.present(alert, animated: true, completion: nil)

@@ -24,12 +24,18 @@ final class AlertContainerViewController: UIViewController {
     
     private let mainView: UIView
     private let titleString: String
+    private let okActionTitle: String
     private var hasCustomAction = false
     
     
-    init(mainView: UIView, title: String) {
+    init(
+        mainView: UIView,
+        title: String,
+        okActionTitle: String = "Выбрать"
+    ) {
         self.mainView = mainView
         self.titleString = title
+        self.okActionTitle = okActionTitle
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +58,7 @@ final class AlertContainerViewController: UIViewController {
         view.setNeedsUpdateConstraints()
         
         if !hasCustomAction {
-            alertView.setOkAction(title: "Выбрать") { [weak self] in
+            alertView.setOkAction(title: okActionTitle) { [weak self] in
                 guard let self = self else { return }
                 self.dismiss(animated: true, completion: nil)
             }
