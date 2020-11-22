@@ -15,6 +15,7 @@ struct HabitItem {
     var dayCount: Int
     var isShownFullDescription: Bool = false
     var todayDone: Bool
+    var shouldShowCheckbox: Bool = false
 }
 
 enum HabitImage: String {

@@ -11,18 +11,17 @@ import CoreData
 
 final class DBService {
     
-    func getAllHabits(_ handler: ([Habit]?, String?) -> ()) {
+    func getAllHabits() -> [Habit] {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            handler(nil, nil)
-            return
+            return []
         }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Habit")
         do {
             let habits = try managedContext.fetch(fetchRequest) as! [Habit]
-            handler(habits, nil)
+            return habits
         } catch {
-            handler(nil, error.localizedDescription)
+            return []
         }
     }
     
@@ -46,7 +45,7 @@ final class DBService {
         habit.weekdaysToRepeat = weekdaysToRepeat
         habit.notificationTime = notificationTime
         habit.dayCount = NSNumber(integerLiteral: dayCount)
-        habit.lastDateDone = lastDateDone
+        habit.lastDateDone = lastDateDone as NSDate?
         
         do {
             try managedContext.save()
@@ -64,7 +63,13 @@ final class DBService {
               let objectId = managedContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else { return false }
         let habit = managedContext.object(with: objectId) as! Habit
         habit.dayCount = NSNumber(integerLiteral: newDayCount)
-        habit.lastDateDone = todayDone ? Date() : nil
+        if todayDone {
+            habit.preLastDateDone = habit.lastDateDone
+            habit.lastDateDone = NSDate()
+        } else {
+            habit.lastDateDone = habit.preLastDateDone
+        }
+        
         do {
             try managedContext.save()
             return true

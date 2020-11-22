@@ -23,7 +23,8 @@ extension Habit {
     @NSManaged public var weekdaysToRepeat: [Int]?
     @NSManaged public var notificationTime: String?
     @NSManaged public var dayCount: NSNumber?
-    @NSManaged public var lastDateDone: Date?
+    @NSManaged public var lastDateDone: NSDate?
+    @NSManaged public var preLastDateDone: NSDate?
 
 }
 

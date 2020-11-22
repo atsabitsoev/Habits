@@ -18,6 +18,7 @@ final class HabitItemView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return label
     }()
@@ -107,6 +108,7 @@ final class HabitItemView: UIView {
         self.item = item
         self.delegate = delegate
         self.initialState = item.todayDone
+        self.checkboxView.isHidden = !item.shouldShowCheckbox
         
         titleLabel.text = item.name
         descriptionLabel.text = item.descriptionString
@@ -203,7 +205,6 @@ final class HabitItemView: UIView {
         let progress = habitProgressInfo.1
         progressView.setProgress(progress, animated: true)
         progressView.progressTintColor = levelColors[level]
-        
         delegate?.dayCountChanged(itemId: item.id, newDayCount: daysCompleted, todayDone: checkboxView.getState())
     }
     

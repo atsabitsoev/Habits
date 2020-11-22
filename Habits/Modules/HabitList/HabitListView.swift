@@ -46,6 +46,11 @@ final class HabitListView: UIView, HabitListViewing {
         tableView.reloadData()
     }
     
+    func deleteHabit(atRow row: Int) {
+        self.habitItems.remove(at: row)
+        self.tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+    }
+    
     
     private func configureTableView() {
         addSubview(tableView)
@@ -91,7 +96,7 @@ extension HabitListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let currentItemId = habitItems[indexPath.row].id
         let editAction = UIContextualAction(style: .normal, title: "Изменить") { (_, _, handler) in
-            self.controller.editHabit(withId: currentItemId)
+            self.controller.editHabitAction(withId: currentItemId)
             handler(true)
         }
         let actions = [editAction]
@@ -101,9 +106,7 @@ extension HabitListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let currentItemId = habitItems[indexPath.row].id
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { (_, _, handler) in
-            self.controller.deleteHabit(withId: currentItemId)
-            self.habitItems.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.controller.deleteHabitAction(withId: currentItemId)
             handler(true)
         }
         let actions = [deleteAction]

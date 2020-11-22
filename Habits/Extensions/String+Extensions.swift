@@ -13,4 +13,10 @@ extension String {
         dateFormatter.dateFormat = "H:mm"
         return dateFormatter.date(from: self)
     }
+    
+    func date() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.date(from: self)
+    }
 }

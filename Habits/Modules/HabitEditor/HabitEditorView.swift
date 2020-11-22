@@ -9,7 +9,7 @@ import UIKit
 
 final class HabitEditorView: UIView, HabitEditorViewing {
     
-    private let controller: HabitEditorControlling
+    private unowned let controller: HabitEditorControlling
     
     
     private let scrollView: UIScrollView = {

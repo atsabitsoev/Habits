@@ -17,6 +17,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     
     private var habitListView: HabitListViewing!
     private let dbService = DBService()
+    private let checkHabitsService = CheckHabitsService()
     
     private var state: State = .todayHabits {
         didSet {
@@ -26,7 +27,7 @@ final class HabitListController: UIViewController, HabitListControlling {
     }
     private var habits: [Habit] = []
     
-    
+    // MARK: - Life Cycle
     override func loadView() {
         super.loadView()
         habitListView = HabitListView(controller: self)
@@ -44,25 +45,28 @@ final class HabitListController: UIViewController, HabitListControlling {
         fetchHabits()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showCleanedHabitsIfNeeded()
+    }
     
+    
+    // MARK: - Opened funcs
     func dayCountChanged(entityId: String, newDayCount: Int, todayDone: Bool) {
         _ = dbService.setNewDayCountToHabit(withId: entityId, newDayCount: newDayCount, todayDone: todayDone)
     }
     
-    func editHabit(withId id: String) {
+    func editHabitAction(withId id: String) {
         guard let habit = habits.first(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
         let editor = HabitEditorController(habit: habit)
         navigationController?.show(editor, sender: nil)
     }
     
-    func deleteHabit(withId id: String) {
-        guard let index = habits.firstIndex(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
-        if dbService.deleteHabit(withId: id) {
-            habits.remove(at: index)
-        }
+    func deleteHabitAction(withId id: String) {
+        alertDelete(habitId: id)
     }
     
-    
+    // MARK: - Configure
     private func configureNavigationBar() {
         title = state == .todayHabits ? "Сегодня" : "Все привычки"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -80,21 +84,45 @@ final class HabitListController: UIViewController, HabitListControlling {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    // MARK: - Habits Functions
     private func fetchHabits() {
-        dbService.getAllHabits { (habits, errorString) in
-            guard let habits = habits else {
-                print(errorString ?? "Неизвестная ошибка")
-                return
-            }
-            self.habits = state == .todayHabits ? habits.filter({ $0.shouldBeShownNow() }) : habits
-            let habitItems = self.habits.compactMap { (habit) -> HabitItem? in
-                let habitItem = habitToItem(habit)
-                return habitItem
-            }
-            habitListView.setItems(habitItems.reversed())
+        let habits = dbService.getAllHabits()
+        self.habits = state == .todayHabits ? habits.filter({ $0.shouldBeShownNow() }) : habits
+        let habitItems = self.habits.compactMap { (habit) -> HabitItem? in
+            let habitItem = habitToItem(habit)
+            return habitItem
+        }
+        habitListView.setItems(habitItems)
+    }
+    
+    private func deleteHabit(withId id: String) {
+        guard let index = habits.firstIndex(where: {$0.objectID.uriRepresentation().relativeString == id}) else { return }
+        if dbService.deleteHabit(withId: id) {
+            habits.remove(at: index)
+            habitListView.deleteHabit(atRow: index)
         }
     }
     
+    private func showCleanedHabitsIfNeeded() {
+        let cleanedHabitIds = checkHabitsService.cleanedHabitIds
+        if cleanedHabitIds.count > 0 {
+            let cleanedHabits = habits.filter({ cleanedHabitIds.contains($0.objectID.uriRepresentation().absoluteString) })
+            var alertMessage = ""
+            let cleanedHabitsCount = habits.count
+            guard cleanedHabitsCount > 0 else { return }
+            if cleanedHabits.count == 1 {
+                guard let name = habits.first?.name else { return }
+                alertMessage = "Привычка \"\(name)\" была пропущена, ваш прогресс обнулен :("
+            } else {
+                let cleanedHabitsNames = cleanedHabits.compactMap({ $0.name }).map({ "\"\($0)\"" })
+                let cleanedHabitsNamesString = cleanedHabitsNames.joined(separator: ", ")
+                alertMessage = "Привычки: \(cleanedHabitsNamesString) были пропущены, ваш прогресс по ним обнулен :("
+            }
+            showOkAlert(message: alertMessage)
+        }
+    }
+    
+    // MARK: - Habit to Item
     private func habitToItem(_ habit: Habit) -> HabitItem? {
         let id = habit.objectID.uriRepresentation().relativeString
         guard let name = habit.name,
@@ -111,12 +139,13 @@ final class HabitListController: UIViewController, HabitListControlling {
         let minutesToSeconds = (nowComponents.minute ?? 0) * 60
         let seconds = (nowComponents.second ?? 0)
         let secondsFromTodayStart: Double = Double(hoursToSeconds + minutesToSeconds + seconds)
-        if let lastDateDone = habit.lastDateDone {
+        if let lastDateDone = habit.lastDateDone as Date? {
             let lastDateWasNotToday = lastDateDone.distance(to: now) - secondsFromTodayStart <= 0
             todayDone = lastDateWasNotToday
         } else {
             todayDone = false
         }
+        let shouldShowCheckbox = state == .todayHabits
         
         
         let habitItem = HabitItem(
@@ -126,7 +155,8 @@ final class HabitListController: UIViewController, HabitListControlling {
             image: image,
             dayCount: dayCount.intValue,
             isShownFullDescription: false,
-            todayDone: todayDone
+            todayDone: todayDone,
+            shouldShowCheckbox: shouldShowCheckbox
         )
         return habitItem
     }
@@ -135,7 +165,34 @@ final class HabitListController: UIViewController, HabitListControlling {
         navigationController?.show(HabitEditorController(), sender: nil)
     }
     
+    // MARK: Alerts
+    private func alertDelete(habitId id: String) {
+        let alert = UIAlertController(title: nil, message: "Вы уверены?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { [weak self] (_) in
+            self?.deleteHabit(withId: id)
+        }
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        navigationController?.present(alert, animated: true, completion: nil)
+    }
     
+    private func showOkAlert(message: String) {
+        let messageLabel = UILabel()
+        messageLabel.font = UIFont.systemFont(ofSize: 14)
+        messageLabel.numberOfLines = 0
+        messageLabel.text = message
+        messageLabel.textAlignment = .center
+        let alert = AlertContainerViewController(mainView: messageLabel, title: "Прогресс потерян")
+        alert.modalTransitionStyle = .crossDissolve
+        alert.modalPresentationStyle = .overCurrentContext
+        navigationController?.present(alert, animated: true, completion: { [weak self] in
+            self?.checkHabitsService.cleanedHabitIds = []
+        })
+    }
+    
+    
+    // MARK: - Actions
     @objc private func addButtonTapped() {
         showHabitEditor()
     }
@@ -143,5 +200,6 @@ final class HabitListController: UIViewController, HabitListControlling {
     @objc private func changeStateButtonTapped() {
         state = state == .todayHabits ? .allHabits : .todayHabits
     }
+    
     
 }

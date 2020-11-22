@@ -9,15 +9,7 @@ import Foundation
 
 extension Habit {
     func shouldBeShownNow() -> Bool {
-        let calendar = Calendar.current
-        let now = Date()
-        let currentWeekDay = calendar.component(.weekday, from: now)
-        var formattedWeekDay = 0
-        if currentWeekDay < 2 {
-            formattedWeekDay = 6
-        } else {
-            formattedWeekDay = currentWeekDay - 2
-        }
+        let formattedWeekDay = Date().formattedWeekDay()
         return weekdaysToRepeat?.contains(formattedWeekDay) ?? false
     }
 }
