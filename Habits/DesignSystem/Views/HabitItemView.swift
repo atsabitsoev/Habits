@@ -18,7 +18,7 @@ final class HabitItemView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.numberOfLines = 2
+        label.minimumScaleFactor = 0.6
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return label
     }()
@@ -90,6 +90,7 @@ final class HabitItemView: UIView {
     }
     
     override func updateConstraints() {
+        setViewConstraints()
         setProgressViewConstraints()
         setHorizontalStackConstraints()
         setIconImageViewConstraints()
@@ -120,7 +121,7 @@ final class HabitItemView: UIView {
         progressView.setProgress(progress, animated: false)
         progressView.progressTintColor = levelColors[level]
         checkboxView.setTint(color: levelColors[level])
-        showFullDescription(item.isShownFullDescription)
+        showFullText(item.isShownFullDescription)
         checkboxView.setState(item.todayDone)
         
         if !actionToCheckboxAlreadySet {
@@ -132,11 +133,12 @@ final class HabitItemView: UIView {
     }
     
     
-    private func showFullDescription(_ show: Bool) {
+    private func showFullText(_ show: Bool) {
         descriptionLabel.numberOfLines = show ? 0 : 2
     }
     
     private func configureView() {
+        translatesAutoresizingMaskIntoConstraints = false
         verticalStack.addArrangedSubview(titleLabel)
         verticalStack.addArrangedSubview(descriptionLabel)
         horizontalStack.addArrangedSubview(iconImageView)
@@ -149,6 +151,12 @@ final class HabitItemView: UIView {
         layer.cornerRadius = 24
         layer.masksToBounds = true
         
+    }
+    
+    private func setViewConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 98)
+        ])
     }
     
     private func setProgressViewConstraints() {

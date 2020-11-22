@@ -19,4 +19,5 @@ protocol HabitEditorControlling: UIViewController {
 protocol HabitEditorViewing: UIView {
     func configureView()
     func setValues(name: String?, description: String?, image: HabitImage, weekDays: [Int]?, notificationValueString: String?)
+    func showKeyboard()
 }

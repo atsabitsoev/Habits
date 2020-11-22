@@ -25,7 +25,7 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         return stack
     }()
     private let nameView: HTextView = {
-        let view = HTextView(title: "Название", placeholder: "Тренировка")
+        let view = HTextView(title: "Название", placeholder: "Тренировка", maxLength: 17)
         return view
     }()
     private let pictureButton: UIButton = {
@@ -129,6 +129,10 @@ final class HabitEditorView: UIView, HabitEditorViewing {
         weekDaysView.setNewDetail(getWeekDaysString(fromInts: weekDays ?? []))
         selectWeekDayView.setCheckedWeekDays(weekDays ?? [])
         notificationsView.setNewDetail(notificationValueString ?? "Нет")
+    }
+    
+    func showKeyboard() {
+        nameView.beginEditing()
     }
     
     

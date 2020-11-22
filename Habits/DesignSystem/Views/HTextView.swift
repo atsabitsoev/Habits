@@ -41,12 +41,14 @@ final class HTextView: UIView {
             setPlaceholder(isPlaceholderShown)
         }
     }
+    private let maxLength: Int?
     var delegate: HTextViewDelegate?
     
     
-    init(title: String, placeholder: String) {
+    init(title: String, placeholder: String, maxLength: Int? = nil) {
         titleLabel.text = title
         self.placeholder = placeholder
+        self.maxLength = maxLength
         super.init(frame: .zero)
         configureView()
     }
@@ -72,6 +74,10 @@ final class HTextView: UIView {
             isPlaceholderShown = false
         }
         textView.text = text
+    }
+    
+    func beginEditing() {
+        textView.becomeFirstResponder()
     }
     
     
@@ -136,6 +142,15 @@ extension HTextView: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             isPlaceholderShown = true
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard text.count != 0 else { return true }
+        if let textViewText = textView.text, textViewText.count == maxLength {
+            return false
+        } else {
+            return true
         }
     }
     

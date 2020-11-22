@@ -53,6 +53,11 @@ final class HabitEditorController: UIViewController, HabitEditorControlling {
         setViewValues()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        habitEditorView.showKeyboard()
+    }
+    
     
     func setName(_ name: String) {
         creatingHabit.name = name
