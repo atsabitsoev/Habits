@@ -29,6 +29,7 @@ final class HabitListView: UIView, HabitListViewing {
         return imageView
     }()
     
+    /// массив привычек
     private var habitItems: [HabitItem] = []
     
     
